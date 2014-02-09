@@ -1,2 +1,4 @@
-test
-node_modules
+/test
+/node_modules
+.env
+.DS_Store
