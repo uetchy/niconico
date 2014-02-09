@@ -70,18 +70,18 @@ Nicovideo.prototype =
 
     async.waterfall([
       (callback) ->
-        Nicovideo.prototype.sign_in(callback)
+        self.sign_in(callback)
 
       (_status, callback) ->
         ev.emit('signed', _status)
-        Nicovideo.prototype.get_video(video_id, callback)
+        self.get_video(video_id, callback)
 
       (_status, callback) ->
-        Nicovideo.prototype.get_flv(video_id, callback)
+        self.get_flv(video_id, callback)
       
       (_status, _flvinfo, callback) ->
         meta = _.extend(meta, _flvinfo)
-        Nicovideo.prototype.get_thumbinfo(video_id, callback)
+        self.get_thumbinfo(video_id, callback)
       
       (_status, _thumbinfo, callback) ->
         meta = _.extend(meta, _thumbinfo)
@@ -92,7 +92,7 @@ Nicovideo.prototype =
 
         ev.emit('fetched', _status, meta)
         
-        Nicovideo.prototype.http_export(meta.url, meta.filepath, callback)
+        self.http_export(meta.url, meta.filepath, callback)
 
       (callback) ->
         ev.emit('exported', meta.filepath)
