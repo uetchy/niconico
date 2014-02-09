@@ -1,4 +1,9 @@
-/test
 /node_modules
+/test
+/src
+Gruntfile.coffee
 .env
+
+# OS Specific
 .DS_Store
+Thumbs.db
