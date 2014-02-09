@@ -35,6 +35,7 @@
   "dependencies": {
     "request": "~2.33.0",
     "async": "~0.2.10",
-    "xml2js": "~0.4.1"
+    "xml2js": "~0.4.1",
+    "underscore": "~1.5.2"
   }
 }

@@ -14,6 +14,9 @@ module.exports = (grunt) ->
             'src/**/*.coffee'
             'test/**/*.coffee'
           ]
+        options:
+          max_line_length:
+            level: 'ignore'
 
     # Watching files
     watch:

@@ -5,6 +5,7 @@ querystring = require('querystring')
 request = require('request')
 parseString = require('xml2js').parseString
 EventEmitter = require('events').EventEmitter
+_ = require('underscore')
 
 request = request.defaults({jar: true})
 
@@ -60,39 +61,43 @@ Nicovideo.prototype =
       req = request(uri).pipe(fs.createWriteStream(path))
       req.on('finish', callback)
 
-# Sequence methods
+  # Sequence methods
 
   download: (video_id) ->
     meta = {}
     ev = new EventEmitter
+    self = this
 
     async.waterfall([
       (callback) ->
-        sign_in(this.email, this.password, callback)
+        Nicovideo.prototype.sign_in(callback)
 
       (_status, callback) ->
         ev.emit('signed', _status)
-        get_video(video_id, callback)
+        Nicovideo.prototype.get_video(video_id, callback)
 
       (_status, callback) ->
-        get_flv(video_id, callback)
+        Nicovideo.prototype.get_flv(video_id, callback)
       
       (_status, _flvinfo, callback) ->
-        meta.update _flvinfo
-        get_thumbinfo(video_id, callback)
+        meta = _.extend(meta, _flvinfo)
+        Nicovideo.prototype.get_thumbinfo(video_id, callback)
       
       (_status, _thumbinfo, callback) ->
-        meta.update _thumbinfo
-        ev.emit('fetched', _status, meta)
-
+        meta = _.extend(meta, _thumbinfo)
+        
         escapedTitle = meta.title.replace(/\//g, "／")
-
         filename = "#{escapedTitle}.#{meta.movie_type}"
-        meta.filepath = path.resolve(path.join(this.folder, filename))
-        http_export(meta.url, meta.filepath, callback)
+        meta.filepath = path.resolve(path.join(self.folder, filename))
+
+        ev.emit('fetched', _status, meta)
+        
+        Nicovideo.prototype.http_export(meta.url, meta.filepath, callback)
 
       (callback) ->
         ev.emit('exported', meta.filepath)
     ])
+
+    return ev
 
 module.exports = Nicovideo
