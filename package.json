@@ -1,9 +1,10 @@
 {
   "name": "niconico",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Yasuaki Uechi",
+  "homepage": "https://github.com/oame/niconico",
   "keywords": [
-    "nicovideo plug-in."
+    "nicovideo"
   ],
   "description": "A nicovideo plug-in for NodeJS",
   "main": "lib/index.js",
@@ -35,6 +36,5 @@
     "request": "~2.33.0",
     "async": "~0.2.10",
     "xml2js": "~0.4.1"
-  },
-  "homepage": "https://github.com/oame/niconico",
+  }
 }
