@@ -5,19 +5,6 @@ module.exports = (grunt) ->
   grunt.initConfig
     pkg: grunt.file.readJSON('package.json')
 
-    # Coffee Lint
-    coffeelint:
-      app:
-        files:
-          src: [
-            'Gruntfile.coffee'
-            'src/**/*.coffee'
-            'test/**/*.coffee'
-          ]
-        options:
-          max_line_length:
-            level: 'ignore'
-
     # Watching files
     watch:
       scripts:
@@ -37,27 +24,14 @@ module.exports = (grunt) ->
     # Simple Mocha
     simplemocha:
       all:
-        src: ['test/**/*.coffee']
-
-    # Coffee
-    coffee:
-      compile:
-        files:
-          'lib/nicovideo.js': 'src/nicovideo.coffee'
-          'lib/index.js': 'src/index.coffee'
-        options:
-          bare: yes
+        src: ['test/**/*.js']
 
   # Load tasks
   grunt.loadNpmTasks 'grunt-notify'
   grunt.loadNpmTasks 'grunt-contrib-watch'
-  grunt.loadNpmTasks 'grunt-contrib-coffee'
-  grunt.loadNpmTasks 'grunt-coffeelint'
   grunt.loadNpmTasks 'grunt-simple-mocha'
 
   # Register tasks
   grunt.registerTask 'default', [
-    'coffeelint'
-    'coffee'
     'simplemocha'
   ]
