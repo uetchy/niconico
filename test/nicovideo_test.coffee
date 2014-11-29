@@ -2,20 +2,21 @@ dotenv = require('dotenv')
 dotenv.load()
 assert = require('assert')
 path = require('path')
+sys = require('sys')
 
 niconico = require('../lib/index')
 
 agent = new niconico.Nicovideo(
   email: process.env.EMAIL,
   password: process.env.PASSWORD,
-  folder: process.env.FOLDER
+  output: process.env.OUTPUT
 )
 
 describe 'niconico', ->
   it 'パラメータがセット出来ていること', ->
     assert.equal agent.email, process.env.EMAIL
     assert.equal agent.password, process.env.PASSWORD
-    assert.equal agent.folder, process.env.FOLDER
+    assert.equal agent.output, process.env.OUTPUT
 
   it 'サインイン出来ること', (done) ->
     agent.sign_in (error, status) ->
@@ -49,6 +50,6 @@ describe 'niconico', ->
         assert.equal meta.video_id, process.env.VIDEO_ID
 
       req.on 'exported', (filepath) ->
-        generated_path = path.join(process.env.FOLDER, "#{m.title}.#{m.movie_type}")
+        generated_path = path.join(path.resolve(".", process.env.OUTPUT), "#{m.title}.#{m.movie_type}")
         assert.equal filepath, generated_path
         done()

@@ -7,6 +7,8 @@ parseString = require('xml2js').parseString
 EventEmitter = require('events').EventEmitter
 _ = require('underscore')
 
+# sys = require('sys')
+
 request = request.defaults({jar: true})
 
 # Module methods
@@ -14,14 +16,15 @@ request = request.defaults({jar: true})
 Nicovideo = (options) ->
   this.email = options.email
   this.password = options.password
-  this.folder = options.folder
+  this.output = options.output
 
 Nicovideo.prototype =
   sign_in: (callback) ->
     options =
       url: "https://secure.nicovideo.jp/secure/login?site=niconico"
-      form: { mail: this.email, password: this.password }
-      secureProtocol: 'SSLv3_method'
+      form:
+        mail: this.email
+        password: this.password
 
     request.post options, (error, response, body) ->
       callback(null, response.statusCode)
@@ -78,20 +81,20 @@ Nicovideo.prototype =
 
       (_status, callback) ->
         self.get_flv(video_id, callback)
-      
+
       (_status, _flvinfo, callback) ->
         meta = _.extend(meta, _flvinfo)
         self.get_thumbinfo(video_id, callback)
-      
+
       (_status, _thumbinfo, callback) ->
         meta = _.extend(meta, _thumbinfo)
-        
+
         escapedTitle = meta.title.replace(/\//g, "／")
         filename = "#{escapedTitle}.#{meta.movie_type}"
-        meta.filepath = path.resolve(path.join(self.folder, filename))
+        meta.filepath = path.resolve(path.join(self.output, filename))
 
         ev.emit('fetched', _status, meta)
-        
+
         self.http_export(meta.url, meta.filepath, callback)
 
       (callback) ->

@@ -39,7 +39,7 @@ module.exports = (grunt) ->
       all:
         src: ['test/**/*.coffee']
 
-    # Coffee コンパイル
+    # Coffee
     coffee:
       compile:
         files:

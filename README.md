@@ -2,7 +2,7 @@
 
 ## Installation
 ```
-$ npm install niconico --save
+$ npm install niconico
 ```
 
 ## Usage
@@ -13,7 +13,7 @@ niconico = require('niconico')
 nicovideo = new niconico.Nicovideo(
   email: EMAIL,
   password: PASSWORD,
-  folder: FOLDER
+  output: OUTPUT
 )
 
 nicovideo.download(VIDEO_ID)
