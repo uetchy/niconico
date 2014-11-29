@@ -14,48 +14,56 @@ describe('niconico', function() {
   it('パラメータがセット出来ていること', function() {
     assert.equal(agent.email, process.env.EMAIL);
     assert.equal(agent.password, process.env.PASSWORD);
-    return assert.equal(agent.output, process.env.OUTPUT);
+    assert.equal(agent.output, process.env.OUTPUT);
   });
+
   it('サインイン出来ること', function(done) {
-    return agent.sign_in(function(error, status) {
-      assert.equal(status, 302);
-      return done();
-    });
+    agent.sign_in()
+      .then(function(status) {
+        assert.equal(status, 302);
+        done();
+      })
+      .done();
   });
+
   it('videoページをget出来ること', function(done) {
-    return agent.get_video(process.env.VIDEO_ID, function(error, status) {
-      assert.equal(status, 200);
-      return done();
-    });
+    agent.get_video(process.env.VIDEO_ID)
+      .then(function(status) {
+        assert.equal(status, 200);
+        done();
+      })
+      .done();
   });
+
   it('getflv出来ること', function(done) {
-    return agent.get_flv(process.env.VIDEO_ID, function(error, status, flvinfo) {
-      assert.equal(status, 200);
-      return done();
-    });
+    agent.get_flv(process.env.VIDEO_ID)
+      .then(function(flvinfo) {
+        done();
+      })
+      .done();
   });
+
   it('getthumbinfo出来ること', function(done) {
-    return agent.get_thumbinfo(process.env.VIDEO_ID, function(error, status, thumbinfo) {
-      assert.equal(status, 200);
-      return done();
-    });
+    agent.get_thumbinfo(process.env.VIDEO_ID)
+      .then(function(thumbinfo) {
+        done();
+      });
   });
-  return describe('ダウンロードについて', function() {
-    this.timeout(15000);
-    return it('download出来ること', function(done) {
-      var m, req;
-      m = null;
-      req = agent.download(process.env.VIDEO_ID);
-      req.on('fetched', function(status, meta) {
-        m = meta;
-        return assert.equal(meta.video_id, process.env.VIDEO_ID);
-      });
-      return req.on('exported', function(filepath) {
-        var generated_path;
-        generated_path = path.join(path.resolve(".", process.env.OUTPUT), "" + m.title + "." + m.movie_type);
-        assert.equal(filepath, generated_path);
-        return done();
-      });
+
+  describe('ダウンロードについて', function() {
+    this.timeout(20000);
+
+    it('download出来ること', function(done) {
+      agent.download(process.env.VIDEO_ID)
+        .then(function(fpath) {
+          done();
+        })
+        .done();
+
+      // req.on('fetched', function(status, _meta) {
+      //   meta = _meta;
+      //   assert.equal(meta.video_id, process.env.VIDEO_ID);
+      // });
     });
   });
 });
