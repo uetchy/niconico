@@ -1,8 +1,8 @@
 {
   "name": "niconico",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "author": "Yasuaki Uechi",
-  "homepage": "https://github.com/oame/niconico",
+  "homepage": "https://github.com/uetchy/niconico",
   "keywords": [
     "nicovideo"
   ],
@@ -11,12 +11,12 @@
   "licenses": [
     {
       "type": "MIT",
-      "url": "http://github.com/oame/niconico/raw/master/LICENSE"
+      "url": "http://github.com/uetchy/niconico/raw/master/LICENSE"
     }
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/oame/niconico.git"
+    "url": "git://github.com/uetchy/niconico.git"
   },
   "devDependencies": {
     "mocha": "~1.17.1",
