@@ -1,24 +1,30 @@
 # niconico
 
 ## Installation
-```
-$ npm install niconico
+
+```console
+$ npm install --save niconico
 ```
 
 ## Usage
 
-```coffee
-niconico = require('niconico')
+```js
+var niconico = require('niconico');
 
-nicovideo = new niconico.Nicovideo(
+nv = new niconico.Nicovideo(
   email: EMAIL,
   password: PASSWORD,
   output: OUTPUT
-)
+);
 
-nicovideo.download(VIDEO_ID)
-nicovideo.on 'fetched', (status, meta) ->
-  console.log "Title: #{meta.title}"
-nicovideo.on 'exported', (filepath) ->
-  console.log 'Exported'
+nv.fetch_video(VIDEO_ID)
+  .then(function(video){
+    console.log(video.title)
+    video.download()
+  })
+  .then(function(err, output){
+    if (!err) {
+      console.log(output)
+    }
+  })
 ```
