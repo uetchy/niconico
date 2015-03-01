@@ -11,13 +11,13 @@ $ npm install --save niconico
 ```js
 var niconico = require('niconico');
 
-nv = new niconico.Nicovideo(
+nicovideo = new niconico.Nicovideo(
   email: EMAIL,
   password: PASSWORD,
   output: OUTPUT
 );
 
-nv.fetch_video(VIDEO_ID)
+nicovideo.fetch_video(VIDEO_ID)
   .then(function(video){
     console.log(video.title)
     video.download()

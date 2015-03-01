@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.coffee"],"names":[],"mappings":"AAAA,MAAM,CAAC,OAAP,GACE;AAAA,EAAA,SAAA,EAAW,OAAA,CAAQ,aAAR,CAAX;CADF,CAAA","file":"index.js","sourceRoot":"/source/","sourcesContent":["module.exports =\n  nicovideo: require('./nicovideo')\n"]}
