@@ -1,5 +1,7 @@
 # niconico
 
+[![Build Status](https://travis-ci.org/uetchy/niconico.svg?branch=master)](https://travis-ci.org/uetchy/niconico) [![Coverage Status](https://coveralls.io/repos/github/uetchy/niconico/badge.svg?branch=master)](https://coveralls.io/github/uetchy/niconico?branch=master)
+
 niconico API wrapper for Node.JS.
 
 ## Installation
