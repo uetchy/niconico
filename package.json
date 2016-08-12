@@ -4,7 +4,7 @@
   "description": "A nicovideo plug-in for NodeJS",
   "main": "lib",
   "scripts": {
-    "test": "nyc ava && xo",
+    "test": "nyc ava --serial && xo",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "author": "Yasuaki Uechi",

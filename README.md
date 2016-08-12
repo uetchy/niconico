@@ -16,13 +16,13 @@ $ npm install --save niconico
 const {niconico, Nicovideo} = require('niconico');
 
 return niconico
-	.getSessionCookie(process.env.EMAIL, process.env.PASSWORD)
-	.then(sessionCookie => {
-		const agent = new Nicovideo(sessionCookie);
-		agent.download('sm28222588', './videos');
+	.login(process.env.EMAIL, process.env.PASSWORD)
+	.then(session => {
+		return new Nicovideo(session)
+			.download('sm28222588', './videos');
 	})
-	.then(destinationPath => {
-		console.log('Downloaded:', destinationPath);
+	.then(filePath => {
+		console.log('Downloaded:', filePath);
 	})
 	.catch(err => {
 		console.log('Error:', err);

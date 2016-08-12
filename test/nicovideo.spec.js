@@ -1,88 +1,46 @@
 import test from 'ava';
 
-import {niconico, Nicovideo} from '../lib';
+import {niconico, Nicovideo} from '..';
 
-test.beforeEach(t => {
-	t.context.videoID = process.env.VIDEO_ID || 'sm28222588';
-});
+const EMAIL = process.env.EMAIL;
+const PASSWORD = process.env.PASSWORD;
+const VIDEO_ID = 'sm28222588';
 
-test('サインイン出来ること', t => {
+test('get watch data containers', t => {
 	return niconico
-		.getSessionCookie(process.env.EMAIL, process.env.PASSWORD)
-		.then(sessionCookie => {
-			// console.log('sessionCookie:', sessionCookie);
-			const json = sessionCookie
-				.getCookies('http://nicovideo.jp')
-				.map(l => l.toJSON())
-				.map(c => c.key);
-
-			t.true(json.includes('nicosid'));
-			t.true(json.includes('user_session'));
-		})
-		.catch(err => {
-			console.log(err);
-		});
-});
-
-test('videoページをget出来ること', t => {
-	return niconico
-		.getSessionCookie(process.env.EMAIL, process.env.PASSWORD)
-		.then(sessionCookie => {
-			const agent = new Nicovideo(sessionCookie);
-			return agent.getWatchData(t.context.videoID);
+		.login(EMAIL, PASSWORD)
+		.then(session => {
+			return new Nicovideo(session).watch(VIDEO_ID);
 		})
 		.then(result => {
 			// console.log('watchAPI:', result);
-			t.is(result.videoDetail.title, '【ゆめにっき】クリプト・オブ･ザ・モノクロダンサー');
+			t.is(result.watchAPI.videoDetail.title, '【ゆめにっき】クリプト・オブ･ザ・モノクロダンサー');
 		})
 		.catch(err => {
 			console.log(err);
 		});
 });
 
-test('getflv出来ること', t => {
-	let agent;
-	return niconico
-		.getSessionCookie(process.env.EMAIL, process.env.PASSWORD)
-		.then(sessionCookie => {
-			agent = new Nicovideo(sessionCookie);
-			return agent.getWatchData(t.context.videoID);
-		})
-		.then(() => {
-			return agent.getFLV(t.context.videoID);
-		})
-		.then(flvinfo => {
-			// console.log('flvinfo:', flvinfo);
-			t.true(Object.keys(flvinfo).includes('threadID'));
-			t.true(Object.keys(flvinfo).includes('url'));
-		})
-		.catch(err => {
-			console.log(err);
-		});
-});
-
-test('getthumbinfo出来ること', t => {
-	const agent = new Nicovideo();
-	return agent
-		.getThumbinfo(t.context.videoID)
+test('getthumbinfo', t => {
+	return new Nicovideo()
+		.thumbinfo(VIDEO_ID)
 		.then(thumbinfo => {
 			// console.log('thumbinfo:', thumbinfo);
-			t.is(thumbinfo.watchURL, `http://www.nicovideo.jp/watch/${t.context.videoID}`);
+			t.is(thumbinfo.watchURL, `http://www.nicovideo.jp/watch/${VIDEO_ID}`);
 		})
 		.catch(err => {
 			console.log(err);
 		});
 });
 
-test('download出来ること', t => {
+test('download videos', () => {
 	return niconico
-		.getSessionCookie(process.env.EMAIL, process.env.PASSWORD)
-		.then(sessionCookie => {
-			const agent = new Nicovideo(sessionCookie);
-			return agent.download(t.context.videoID, '.');
+		.login(EMAIL, PASSWORD)
+		.then(session => {
+			return new Nicovideo(session).download(VIDEO_ID, '.');
 		})
-		.then(destinationPath => {
-			console.log(destinationPath);
+		.then(filePath => {
+			console.log(filePath);
 		})
 		.catch(err => {
 			console.log(err);
