@@ -1,72 +1,90 @@
 import test from 'ava';
 
-import Nicovideo from '../lib/nicovideo';
+import {niconico, Nicovideo} from '../lib';
 
 test.beforeEach(t => {
-	t.context.nv = new Nicovideo({
-		email: process.env.EMAIL,
-		password: process.env.PASSWORD
-	});
-	t.context.videoID = process.env.VIDEO_ID || 'sm9';
+	t.context.videoID = process.env.VIDEO_ID || 'sm28222588';
 });
 
-test('パラメータがセットされていること', t => {
-	t.is(t.context.nv.email, process.env.EMAIL);
-	t.is(t.context.nv.password, process.env.PASSWORD);
-});
+test('サインイン出来ること', t => {
+	return niconico
+		.getSessionCookie(process.env.EMAIL, process.env.PASSWORD)
+		.then(sessionCookie => {
+			// console.log('sessionCookie:', sessionCookie);
+			const json = sessionCookie
+				.getCookies('http://nicovideo.jp')
+				.map(l => l.toJSON())
+				.map(c => c.key);
 
-test.cb('サインイン出来ること', t => {
-	t.context.nv.signIn()
-		.then(status => {
-			t.is(status, 302);
-			t.end();
+			t.true(json.includes('nicosid'));
+			t.true(json.includes('user_session'));
 		})
 		.catch(err => {
-			t.fail(err);
+			console.log(err);
 		});
 });
 
-test.cb('videoページをget出来ること', t => {
-	t.context.nv.signIn()
-		.then(t.context.nv.fetchVideoPage(t.context.videoID))
+test('videoページをget出来ること', t => {
+	return niconico
+		.getSessionCookie(process.env.EMAIL, process.env.PASSWORD)
+		.then(sessionCookie => {
+			const agent = new Nicovideo(sessionCookie);
+			return agent.getWatchData(t.context.videoID);
+		})
 		.then(result => {
-			t.is(result, 302);
-			t.end();
+			// console.log('watchAPI:', result);
+			t.is(result.videoDetail.title, '【ゆめにっき】クリプト・オブ･ザ・モノクロダンサー');
 		})
 		.catch(err => {
-			t.fail(err);
+			console.log(err);
 		});
 });
 
-test.cb('getflv出来ること', t => {
-	t.context.nv.signIn()
-		.then(t.context.nv.fetchVideoPage(t.context.videoID))
-		.then(t.context.nv.getFLV(t.context.videoID))
+test('getflv出来ること', t => {
+	let agent;
+	return niconico
+		.getSessionCookie(process.env.EMAIL, process.env.PASSWORD)
+		.then(sessionCookie => {
+			agent = new Nicovideo(sessionCookie);
+			return agent.getWatchData(t.context.videoID);
+		})
+		.then(() => {
+			return agent.getFLV(t.context.videoID);
+		})
 		.then(flvinfo => {
-			console.log(flvinfo);
-			t.end();
+			// console.log('flvinfo:', flvinfo);
+			t.true(Object.keys(flvinfo).includes('threadID'));
+			t.true(Object.keys(flvinfo).includes('url'));
 		})
 		.catch(err => {
-			t.fail(err);
+			console.log(err);
 		});
 });
 
-test.cb('getthumbinfo出来ること', t => {
-	t.context.nv.signIn()
-		.then(t.context.nv.getThumbinfo(t.context.videoID))
+test('getthumbinfo出来ること', t => {
+	const agent = new Nicovideo();
+	return agent
+		.getThumbinfo(t.context.videoID)
 		.then(thumbinfo => {
-			console.log(thumbinfo);
-			t.end();
+			// console.log('thumbinfo:', thumbinfo);
+			t.is(thumbinfo.watchURL, `http://www.nicovideo.jp/watch/${t.context.videoID}`);
 		})
 		.catch(err => {
-			t.fail(err);
+			console.log(err);
 		});
 });
 
-// describe 'ダウンロードについて', ->
-//   @timeout 20000
-
-//   test('download出来ること', done => {
-//     @nv.download(t.context.videoID).then((fpath) => {
-//       done()
-//     ).done()
+test('download出来ること', t => {
+	return niconico
+		.getSessionCookie(process.env.EMAIL, process.env.PASSWORD)
+		.then(sessionCookie => {
+			const agent = new Nicovideo(sessionCookie);
+			return agent.download(t.context.videoID, '.');
+		})
+		.then(destinationPath => {
+			console.log(destinationPath);
+		})
+		.catch(err => {
+			console.log(err);
+		});
+});
