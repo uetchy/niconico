@@ -2,15 +2,15 @@
   "name": "niconico",
   "version": "0.0.8",
   "author": "Yasuaki Uechi",
-  "homepage": "https://github.com/uetchy/niconico",
+  "homepage": "https://github.com/uetchy/niconico#readme",
   "keywords": [
     "nicovideo",
     "niconico"
   ],
   "description": "A nicovideo plug-in for NodeJS",
-  "main": "lib/index.js",
+  "main": "lib",
   "scripts": {
-    "test": "./node_modules/.bin/mocha --compilers coffee:coffee-script/register test/"
+    "test": "xo && ava"
   },
   "repository": {
     "type": "git",
@@ -21,24 +21,15 @@
   },
   "license": "MIT",
   "dependencies": {
-    "bluebird": "^2.9.13",
+    "bluebird": "^2.10.2",
     "lodash": "^3.3.1",
     "request": "~2.53.0",
     "tough-cookie": "^0.12.1",
     "xml2js": "~0.4.5"
   },
   "devDependencies": {
-    "chai": "^2.1.0",
-    "coffee-script": "^1.9.1",
-    "dotenv": "~0.5.1",
-    "gulp": "^3.8.11",
-    "gulp-coffee": "^2.3.1",
-    "gulp-mocha": "^2.0.0",
-    "gulp-plumber": "^0.6.6",
-    "gulp-shell": "^0.3.0",
-    "gulp-sourcemaps": "^1.5.0",
-    "gulp-uglify": "^1.1.0",
-    "mocha": "~2.1.0",
-    "source-map-support": "^0.2.9"
+    "ava": "^0.16.0",
+    "nyc": "^7.1.0",
+    "xo": "^0.16.0"
   }
 }
