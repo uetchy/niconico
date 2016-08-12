@@ -23,7 +23,6 @@
   "license": "MIT",
   "dependencies": {
     "bluebird": "^2.10.2",
-    "lodash": "^3.3.1",
     "request": "~2.53.0",
     "tough-cookie": "^0.12.1",
     "xml2js": "~0.4.5"
