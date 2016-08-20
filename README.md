@@ -17,13 +17,7 @@ const {niconico, Nicovideo} = require('niconico');
 
 return niconico
 	.login(process.env.EMAIL, process.env.PASSWORD)
-	.then(session => {
-		return new Nicovideo(session).download('sm28222588', './videos');
-	})
-	.then(filePath => {
-		console.log('Downloaded:', filePath);
-	})
-	.catch(err => {
-		console.log('Error:', err);
-	});
+	.then(session => new Nicovideo(session).download('sm28222588', './videos'))
+	.then(filePath => console.log('Downloaded:', filePath))
+	.catch(err => console.log('Error:', err));
 ```
