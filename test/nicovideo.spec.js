@@ -46,3 +46,12 @@ test('download videos', () => {
 			console.log(err);
 		});
 });
+
+test('should fail when can not logIn', t => {
+	return niconico
+		.login('', '')
+		.then(() => new Nicovideo().watch(VIDEO_ID))
+		.then(() => t.fail())
+		.catch(() => t.pass());
+});
+
