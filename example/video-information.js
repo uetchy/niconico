@@ -1,15 +1,13 @@
 #!/usr/bin/env node
 // example: $ node ./video-information.js <video-id>
 
-const VIDEO_ID = process.argv[2]
-
+const assert = require('assert')
 const { Nicovideo } = require('..')
 
-new Nicovideo()
-  .thumbinfo(VIDEO_ID, '.')
-  .then(thumbinfo => {
-    console.log(thumbinfo)
-  })
-  .catch(err => {
-    console.log('Error:', err)
-  })
+async function main(videoID) {
+  assert(videoID, 'no video id given')
+  const thumbinfo = await new Nicovideo().thumbinfo(videoID, '.')
+  console.log(JSON.stringify(thumbinfo, null, 2))
+}
+
+main(process.argv[2])

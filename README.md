@@ -7,16 +7,16 @@ niconico API wrapper for Node.JS.
 ## Usage
 
 ```
-npm install --save niconico
+yarn add niconico
 ```
 
 ```js
 const {niconico, Nicovideo} = require('niconico');
 
 return niconico
-	.login(process.env.EMAIL, process.env.PASSWORD)
-	.then(session => new Nicovideo(session).download('sm28222588', './videos'))
-	.then(filePath => console.log('Downloaded:', filePath))
+	.login(process.env.EMAIL, process.env.PASSWORD);
+	.then(session => new Nicovideo(session).download('sm28222588', './videos'));
+	.then(filePath => console.log('Downloaded:', filePath));
 	.catch(err => console.log('Error:', err));
 ```
 
@@ -89,5 +89,5 @@ Type: `string`
 Before create a pull-request, you need to test using `npm test`.
 
 ```
-npm test
+EMAIL=<email> PASSWORD=<password> npm test
 ```
