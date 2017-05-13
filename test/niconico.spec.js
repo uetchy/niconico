@@ -1,6 +1,6 @@
 import test from 'ava'
 
-import {niconico} from '..'
+import { niconico } from '..'
 
 test.beforeEach(t => {
   t.context.videoID = process.env.VIDEO_ID || 'sm28222588'

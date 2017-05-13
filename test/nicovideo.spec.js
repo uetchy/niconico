@@ -1,6 +1,6 @@
 import test from 'ava'
 
-import {niconico, Nicovideo} from '..'
+import { niconico, Nicovideo } from '..'
 
 const EMAIL = process.env.EMAIL
 const PASSWORD = process.env.PASSWORD
@@ -54,4 +54,3 @@ test('should fail when can not logIn', t => {
     .then(() => t.fail())
     .catch(() => t.pass())
 })
-
