@@ -4,7 +4,8 @@
   "description": "A nicovideo plug-in for NodeJS",
   "main": "lib",
   "scripts": {
-    "test": "nyc ava --serial && xo",
+    "test": "nyc ava --serial",
+    "prettier": "prettier --write --no-semi --single-quote '{lib,test,example}/**/*.js'",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "author": "Yasuaki Uechi",
@@ -30,6 +31,6 @@
     "ava": "^0.19.1",
     "coveralls": "^2.13.1",
     "nyc": "^10.3.2",
-    "standard": "^10.0.2"
+    "prettier": "^1.3.1"
   }
 }
