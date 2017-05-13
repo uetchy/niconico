@@ -5,7 +5,6 @@
   "main": "lib",
   "scripts": {
     "test": "nyc ava --serial && xo",
-    "flow": "flow",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "author": "Yasuaki Uechi",
@@ -30,7 +29,6 @@
   "devDependencies": {
     "ava": "^0.16.0",
     "coveralls": "^2.11.12",
-    "flow-bin": "^0.37.4",
     "nyc": "^7.1.0",
     "standard": "^8.6.0"
   }
