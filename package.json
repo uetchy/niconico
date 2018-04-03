@@ -10,10 +10,7 @@
   },
   "author": "Yasuaki Uechi",
   "homepage": "https://github.com/uetchy/niconico#readme",
-  "keywords": [
-    "nicovideo",
-    "niconico"
-  ],
+  "keywords": ["nicovideo", "niconico"],
   "repository": {
     "type": "git",
     "url": "git://github.com/uetchy/niconico.git"
@@ -23,14 +20,14 @@
   },
   "license": "MIT",
   "dependencies": {
-    "jsdom": "^11.3.0",
-    "request": "^2.81.0",
+    "jsdom": "^11.7.0",
+    "request": "^2.85.0",
     "xml2js": "~0.4.5"
   },
   "devDependencies": {
-    "ava": "^0.22.0",
+    "ava": "^0.25.0",
     "coveralls": "^3.0.0",
-    "nyc": "^11.2.1",
-    "prettier": "^1.7.4"
+    "nyc": "^11.6.0",
+    "prettier": "^1.11.1"
   }
 }

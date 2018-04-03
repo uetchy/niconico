@@ -11,10 +11,11 @@ async function main(email, password, videoID) {
     assert(videoID, 'invalid videoID')
     const session = niconico.login(email, password)
     const filepath = new Nicovideo(session).download(videoID, '.')
-    console.log('Downloaded:', filePath)
   } catch (err) {
-    console.log(err)
+    console.error(err)
   }
+
+  console.log('Downloaded:', filePath)
 }
 
 main(process.env.EMAIL, process.env.PASSWORD, process.argv[2])
