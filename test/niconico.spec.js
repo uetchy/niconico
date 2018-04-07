@@ -1,6 +1,6 @@
 import test from 'ava'
 
-import { niconico } from '..'
+import { niconico } from '../dist'
 
 test('success to sign in', async t => {
   const session = await niconico.login(process.env.EMAIL, process.env.PASSWORD)

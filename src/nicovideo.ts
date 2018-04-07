@@ -1,28 +1,33 @@
-const { EventEmitter } = require('events')
-const querystring = require('querystring')
-const fs = require('fs')
-const path = require('path')
-const request = require('request-promise')
-const xml = require('xml2js')
-const { JSDOM } = require('jsdom')
+import { EventEmitter } from 'events'
+import querystring from 'querystring'
+import { createWriteStream } from 'fs'
+import path from 'path'
+import { get, post, head } from 'request-promise'
+import request from 'request'
+import { parseString } from 'xml2js'
+import { JSDOM } from 'jsdom'
 
-class Nicovideo extends EventEmitter {
-  constructor(cookieJar) {
+import { WatchData, Thumbinfo } from 'nicovideo'
+
+export default class Nicovideo extends EventEmitter {
+  cookieJar: request.CookieJar
+
+  constructor(cookieJar: request.CookieJar) {
     super()
     this.cookieJar = cookieJar || request.jar()
   }
 
-  watch(videoID) {
-    return new Promise(async (resolve, reject) => {
+  watch(videoID: string) {
+    return new Promise<WatchData>(async (resolve, reject) => {
       try {
         const option = {
           jar: this.cookieJar,
         }
-        const body = await request.get(`http://www.nicovideo.jp/watch/${videoID}`, option)
+        const body = await get(`http://www.nicovideo.jp/watch/${videoID}`, option)
         const { document } = new JSDOM(body).window
 
-        const data = JSON.parse(
-          document.querySelector('#js-initial-watch-data').attributes['data-api-data'].textContent
+        const data = <WatchData>JSON.parse(
+          document.querySelector('#js-initial-watch-data').getAttribute('data-api-data')
         )
 
         resolve(data)
@@ -32,17 +37,14 @@ class Nicovideo extends EventEmitter {
     })
   }
 
-  thumbinfo(videoID) {
-    return new Promise((resolve, reject) => {
+  thumbinfo(videoID: string) {
+    return new Promise<Thumbinfo>(async (resolve, reject) => {
       if (!videoID) {
         reject('videoID must be specified')
       }
-      request.get(`http://ext.nicovideo.jp/api/getthumbinfo/${videoID}`, (err, res, body) => {
-        if (err) {
-          return reject(res.statusCode)
-        }
-
-        xml.parseString(body, (parseError, result) => {
+      try {
+        const body = await get(`http://ext.nicovideo.jp/api/getthumbinfo/${videoID}`)
+        parseString(body, (parseError, result) => {
           if (parseError) {
             return reject(parseError)
           }
@@ -52,30 +54,30 @@ class Nicovideo extends EventEmitter {
           }
 
           const thumb = result.nicovideo_thumb_response.thumb[0]
-
-          const thumbinfo = {
+          const thumbinfo = <Thumbinfo>{
             videoID: thumb.video_id[0],
             title: thumb.title[0],
             description: thumb.description[0],
             watchURL: thumb.watch_url[0],
             movieType: thumb.movie_type[0],
           }
-
           resolve(thumbinfo)
         })
-      })
+      } catch (err) {
+        reject(err)
+      }
     })
   }
 
-  httpExport(uri, targetPath) {
-    return new Promise(async (resolve, reject) => {
+  httpExport(uri: string, targetPath: string) {
+    return new Promise<string>(async (resolve, reject) => {
       try {
-        const headRes = await request.head(uri, {
+        const headRes = await head(uri, {
           resolveWithFullResponse: false,
           simple: false,
         })
         request(uri, { jar: this.cookieJar })
-          .pipe(fs.createWriteStream(targetPath))
+          .pipe(createWriteStream(targetPath))
           .on('finish', () => resolve(targetPath))
       } catch (err) {
         reject(err)
@@ -83,8 +85,8 @@ class Nicovideo extends EventEmitter {
     })
   }
 
-  download(videoID, targetPath) {
-    return new Promise(async (resolve, reject) => {
+  download(videoID: string, targetPath: string) {
+    return new Promise<string>(async (resolve, reject) => {
       try {
         const data = await this.watch(videoID)
         const escapedTitle = data.video.title.replace(/\//g, '／')
@@ -98,5 +100,3 @@ class Nicovideo extends EventEmitter {
     })
   }
 }
-
-module.exports = Nicovideo

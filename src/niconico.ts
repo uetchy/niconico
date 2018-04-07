@@ -1,14 +1,15 @@
-const request = require('request-promise')
+import request from 'request'
+import { post } from 'request-promise'
 
-function login(email, password) {
-  return new Promise(async (resolve, reject) => {
+export function login(email: string, password: string) {
+  return new Promise<request.CookieJar>(async (resolve, reject) => {
     const requestURL = 'https://account.nicovideo.jp/api/v1/login?site=niconico&next_url='
     const jar = request.jar()
     try {
-      const res = await request.post(requestURL, {
+      const res = await post(requestURL, {
         jar: jar,
         form: {
-          mail_tel: email, // eslint-disable-line camelcase
+          mail_tel: email,
           password: password,
         },
         simple: false,
@@ -19,13 +20,9 @@ function login(email, password) {
         return reject('invalid credentials')
       }
 
-      return resolve(jar)
+      resolve(jar)
     } catch (err) {
       reject(err)
     }
   })
-}
-
-module.exports = {
-  login,
 }

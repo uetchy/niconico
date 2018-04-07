@@ -2,17 +2,15 @@
   "name": "niconico",
   "version": "1.0.0",
   "description": "A nicovideo plug-in for NodeJS",
-  "main": "lib",
+  "main": "dist",
   "scripts": {
     "test": "nyc ava --serial",
+    "watch": "tsc -w",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "author": "Yasuaki Uechi",
   "homepage": "https://github.com/uetchy/niconico#readme",
-  "keywords": [
-    "nicovideo",
-    "niconico"
-  ],
+  "keywords": ["nicovideo", "niconico"],
   "repository": {
     "type": "git",
     "url": "git://github.com/uetchy/niconico.git"
@@ -22,6 +20,9 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@types/jsdom": "^11.0.4",
+    "@types/request-promise": "^4.1.41",
+    "@types/xml2js": "^0.4.2",
     "jsdom": "^11.7.0",
     "request": "^2.85.0",
     "request-promise": "^4.2.2",

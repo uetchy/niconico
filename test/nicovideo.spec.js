@@ -1,6 +1,6 @@
 import test from 'ava'
 import path from 'path'
-import { niconico, Nicovideo } from '..'
+import { niconico, Nicovideo } from '../dist'
 
 const EMAIL = process.env.EMAIL
 const PASSWORD = process.env.PASSWORD
