@@ -1,5 +1,7 @@
 language: node_js
 node_js: stable
+before_install:
+  - npm install -g typescript
 after_success:
   - npm run coverage
 notifications:
