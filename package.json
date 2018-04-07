@@ -5,12 +5,14 @@
   "main": "lib",
   "scripts": {
     "test": "nyc ava --serial",
-    "prettier": "prettier --write --no-semi --single-quote '{lib,test,example}/**/*.js'",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "author": "Yasuaki Uechi",
   "homepage": "https://github.com/uetchy/niconico#readme",
-  "keywords": ["nicovideo", "niconico"],
+  "keywords": [
+    "nicovideo",
+    "niconico"
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/uetchy/niconico.git"
@@ -22,12 +24,12 @@
   "dependencies": {
     "jsdom": "^11.7.0",
     "request": "^2.85.0",
+    "request-promise": "^4.2.2",
     "xml2js": "~0.4.5"
   },
   "devDependencies": {
     "ava": "^0.25.0",
     "coveralls": "^3.0.0",
-    "nyc": "^11.6.0",
-    "prettier": "^1.11.1"
+    "nyc": "^11.6.0"
   }
 }

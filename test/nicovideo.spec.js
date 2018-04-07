@@ -1,5 +1,5 @@
 import test from 'ava'
-
+import path from 'path'
 import { niconico, Nicovideo } from '..'
 
 const EMAIL = process.env.EMAIL
@@ -14,14 +14,14 @@ test.before(async t => {
 })
 
 test('get watch data containers', async t => {
-  const result = await client.watch(VIDEO_ID)
-  t.is(result.watchAPI.videoDetail.title, '【ゆめにっき】クリプト・オブ･ザ・モノクロダンサー')
+  const data = await client.watch(VIDEO_ID)
+  t.is(data.video.title, '【ゆめにっき】クリプト・オブ･ザ・モノクロダンサー')
 })
 
 test('fail when invalid videoID given', t => {
   return client
     .watch('sm99999999999')
-    .then(result => t.fail(result))
+    .then(data => t.fail(data))
     .catch(err => {
       t.pass(err)
     })
@@ -30,8 +30,8 @@ test('fail when invalid videoID given', t => {
 test('fail when credentials missing', async t => {
   try {
     const session = await niconico.login('', '')
-    const result = await new Nicovideo(session).watch(VIDEO_ID)
-    t.fail(result)
+    const data = await new Nicovideo(session).watch(VIDEO_ID)
+    t.fail(data)
   } catch (err) {
     t.pass(err)
   }
@@ -66,5 +66,6 @@ test('fail to download video', async t => {
 
 test('download video', async t => {
   const filePath = await client.download(VIDEO_ID, '.')
+  t.is(filePath, path.resolve('./【ゆめにっき】クリプト・オブ･ザ・モノクロダンサー.mp4'))
   t.pass()
 })

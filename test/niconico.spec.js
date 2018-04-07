@@ -2,14 +2,11 @@ import test from 'ava'
 
 import { niconico } from '..'
 
-test.beforeEach(t => {
-  t.context.videoID = process.env.VIDEO_ID || 'sm28222588'
-})
-
 test('success to sign in', async t => {
   const session = await niconico.login(process.env.EMAIL, process.env.PASSWORD)
+
   const json = session
-    .getCookies('http://nicovideo.jp')
+    .getCookies('https://nicovideo.jp')
     .map(l => l.toJSON())
     .map(c => c.key)
 
