@@ -28,19 +28,19 @@ export interface Video {
   backCommentType?: any
   channelId?: any
   isCommentExpired: boolean
-  isWide?: any
-  isOfficialAnime?: any
-  isNoBanner?: any
+  isWide?: boolean
+  isOfficialAnime?: boolean
+  isNoBanner?: boolean
   isDeleted: boolean
   isTranslated: boolean
   isR18: boolean
   isAdult: boolean
-  isNicowari?: any
+  isNicowari?: boolean
   isPublic: boolean
-  isPublishedNicoscript?: any
-  isNoNGS?: any
+  isPublishedNicoscript?: boolean
+  isNoNGS?: boolean
   isCommunityMemberOnly: string
-  isCommonsTreeExists?: any
+  isCommonsTreeExists?: boolean
   isNoIchiba: boolean
   isOfficial: boolean
   isMonetized: boolean
@@ -164,20 +164,20 @@ export interface Context {
   returnTo?: any
   returnMsg?: any
   watchId: string
-  isNoMovie?: any
-  isNoRelatedVideo?: any
-  isDownloadCompleteWait?: any
-  isNoNicotic?: any
+  isNoMovie?: boolean
+  isNoRelatedVideo?: boolean
+  isDownloadCompleteWait?: boolean
+  isNoNicotic?: boolean
   isNeedPayment: boolean
   isAdultRatingNG: boolean
-  isPlayable?: any
+  isPlayable?: boolean
   isTranslatable: boolean
   isTagUneditable: boolean
   isVideoOwner: boolean
   isThreadOwner: boolean
-  isOwnerThreadEditable?: any
+  isOwnerThreadEditable?: boolean
   useChecklistCache?: any
-  isDisabledMarquee?: any
+  isDisabledMarquee?: boolean
   isDictionaryDisplayable: boolean
   isDefaultCommentInvisible: boolean
   accessFrom?: any

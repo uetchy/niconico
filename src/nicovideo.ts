@@ -20,10 +20,9 @@ export default class Nicovideo extends EventEmitter {
   watch(videoID: string) {
     return new Promise<WatchData>(async (resolve, reject) => {
       try {
-        const option = {
+        const body = await get(`http://www.nicovideo.jp/watch/${videoID}`, {
           jar: this.cookieJar,
-        }
-        const body = await get(`http://www.nicovideo.jp/watch/${videoID}`, option)
+        })
         const { document } = new JSDOM(body).window
 
         const data = <WatchData>JSON.parse(
@@ -89,7 +88,7 @@ export default class Nicovideo extends EventEmitter {
     return new Promise<string>(async (resolve, reject) => {
       try {
         const data = await this.watch(videoID)
-        const escapedTitle = data.video.title.replace(/\//g, '／')
+        const escapedTitle: string = data.video.title.replace(/\//g, '／')
         const filename = escapedTitle + '.' + data.video.movieType
         const filepath = path.resolve(path.join(targetPath, filename))
         const exportedPath = await this.httpExport(data.video.smileInfo.url, filepath)

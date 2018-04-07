@@ -7,7 +7,13 @@ const { Nicovideo } = require('..')
 async function main(videoID) {
   assert(videoID, 'no video id given')
   const client = new Nicovideo()
-  const thumbinfo = await client.thumbinfo(videoID)
+
+  try {
+    const thumbinfo = await client.thumbinfo(videoID)
+  } catch (err) {
+    console.error(err)
+  }
+
   console.log(JSON.stringify(thumbinfo, null, 2))
 }
 

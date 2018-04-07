@@ -4,7 +4,7 @@
   "description": "A nicovideo plug-in for NodeJS",
   "main": "dist",
   "scripts": {
-    "test": "nyc ava --serial",
+    "test": "tsc && nyc ava --serial",
     "watch": "tsc -w",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },

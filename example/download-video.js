@@ -5,10 +5,11 @@ const assert = require('assert')
 const { niconico, Nicovideo } = require('..')
 
 async function main(email, password, videoID) {
+  assert(email, 'invalid email')
+  assert(pasword, 'invalid pasword')
+  assert(videoID, 'invalid videoID')
+
   try {
-    assert(email, 'invalid email')
-    assert(pasword, 'invalid pasword')
-    assert(videoID, 'invalid videoID')
     const session = await niconico.login(email, password)
     const client = new Nicovideo(session)
     const exportedPath = await client.download(videoID, '.')
