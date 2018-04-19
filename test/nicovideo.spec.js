@@ -1,9 +1,13 @@
 import test from 'ava'
+import assert from 'assert'
 import path from 'path'
 import { niconico, Nicovideo } from '../dist'
 
-const EMAIL = process.env.EMAIL
-const PASSWORD = process.env.PASSWORD
+const EMAIL = process.env.NICONICO_EMAIL
+const PASSWORD = process.env.NICONICO_PASSWORD
+assert(EMAIL, 'set NICONICO_EMAIL')
+assert(PASSWORD, 'set NICONICO_PASSWORD')
+
 const VIDEO_ID = 'sm28222588'
 
 let client

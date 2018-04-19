@@ -1,9 +1,14 @@
 import test from 'ava'
-
+import assert from 'assert'
 import { niconico } from '../dist'
 
+const EMAIL = process.env.NICONICO_EMAIL
+const PASSWORD = process.env.NICONICO_PASSWORD
+assert(EMAIL, 'set NICONICO_EMAIL')
+assert(PASSWORD, 'set NICONICO_PASSWORD')
+
 test('success to sign in', async t => {
-  const session = await niconico.login(process.env.EMAIL, process.env.PASSWORD)
+  const session = await niconico.login(EMAIL, PASSWORD)
 
   const json = session
     .getCookies('https://nicovideo.jp')
@@ -16,7 +21,7 @@ test('success to sign in', async t => {
 
 test('fail to sign in', async t => {
   try {
-    const session = await niconico.login(process.env.EMAIL, 'invalidpassword')
+    const session = await niconico.login(EMAIL, 'invalidpassword')
     t.fail(session)
   } catch (err) {
     t.pass()

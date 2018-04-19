@@ -10,7 +10,10 @@
   },
   "author": "Yasuaki Uechi",
   "homepage": "https://github.com/uetchy/niconico#readme",
-  "keywords": ["nicovideo", "niconico"],
+  "keywords": [
+    "nicovideo",
+    "niconico"
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/uetchy/niconico.git"

@@ -1,5 +1,6 @@
 *.mp4
 /dist
+.env
 
 # Created by https://www.gitignore.io/api/node
 
