@@ -26,14 +26,14 @@
     "@types/jsdom": "^11.0.4",
     "@types/request-promise": "^4.1.41",
     "@types/xml2js": "^0.4.2",
-    "jsdom": "^11.7.0",
-    "request": "^2.85.0",
+    "jsdom": "^11.11.0",
+    "request": "^2.87.0",
     "request-promise": "^4.2.2",
     "xml2js": "~0.4.5"
   },
   "devDependencies": {
     "ava": "^0.25.0",
-    "coveralls": "^3.0.0",
-    "nyc": "^11.6.0"
+    "coveralls": "^3.0.1",
+    "nyc": "^12.0.1"
   }
 }

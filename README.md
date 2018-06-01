@@ -2,22 +2,29 @@
 
 [![npm version](https://badge.fury.io/js/niconico.svg)](https://badge.fury.io/js/niconico) [![Build Status](https://travis-ci.org/uetchy/niconico.svg?branch=master)](https://travis-ci.org/uetchy/niconico) [![Coverage Status](https://coveralls.io/repos/github/uetchy/niconico/badge.svg?branch=master)](https://coveralls.io/github/uetchy/niconico?branch=master)
 
-niconico API wrapper for Node.JS.
+niconico API library for Node.JS, armed with Promises.
 
 ## Usage
 
 ```
-yarn add niconico
+npm install niconico
 ```
 
 ```js
 const {niconico, Nicovideo} = require('niconico');
 
-return niconico
-	.login(process.env.EMAIL, process.env.PASSWORD);
-	.then(session => new Nicovideo(session).download('sm28222588', './videos'));
-	.then(filePath => console.log('Downloaded:', filePath));
-	.catch(err => console.log('Error:', err));
+async function downloadVideo() {
+	try {
+		const session = await niconico.login(process.env.EMAIL, process.env.PASSWORD);
+		const client = new Nicovideo(session)
+
+		const filePath = await client.download('sm28222588', './videos'));
+
+		console.log('Downloaded:', filePath));
+	} catch (err) {
+		console.log('Error:', err);
+	}
+}
 ```
 
 ## API
