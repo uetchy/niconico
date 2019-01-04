@@ -1,1 +1,11 @@
+.env
+.editorconfig
+.nyc_output
+.travis.yml
+.env.sample
+*.mp4
+*.tgz
+tsconfig.json
 /src
+/examples
+/test
