@@ -16,7 +16,7 @@ const {niconico, Nicovideo} = require('niconico');
 async function downloadVideo() {
 	try {
 		const session = await niconico.login(process.env.EMAIL, process.env.PASSWORD);
-		const client = new Nicovideo(session)
+		const client = new Nicovideo(session);
 
 		const filePath = await client.download('sm28222588', './videos'));
 
@@ -96,5 +96,5 @@ Type: `string`
 Before create a pull-request, you need to test using `npm test`.
 
 ```
-EMAIL=<email> PASSWORD=<password> npm test
+NICONICO_EMAIL=<email> NICONICO_PASSWORD=<password> npm test
 ```
