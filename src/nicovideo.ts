@@ -20,13 +20,17 @@ export default class Nicovideo extends EventEmitter {
   watch(videoID: string) {
     return new Promise<WatchData>(async (resolve, reject) => {
       try {
-        const body = await get(`http://www.nicovideo.jp/watch/${videoID}`, {
+        const body = await get(`https://www.nicovideo.jp/watch/${videoID}`, {
           jar: this.cookieJar,
         })
         const { document } = new JSDOM(body).window
 
-        const data = <WatchData>JSON.parse(
-          document.querySelector('#js-initial-watch-data').getAttribute('data-api-data')
+        const data = <WatchData>(
+          JSON.parse(
+            document
+              .querySelector('#js-initial-watch-data')
+              .getAttribute('data-api-data')
+          )
         )
 
         resolve(data)
@@ -42,14 +46,18 @@ export default class Nicovideo extends EventEmitter {
         reject('videoID must be specified')
       }
       try {
-        const body = await get(`http://ext.nicovideo.jp/api/getthumbinfo/${videoID}`)
+        const body = await get(
+          `https://ext.nicovideo.jp/api/getthumbinfo/${videoID}`
+        )
         parseString(body, (parseError, result) => {
           if (parseError) {
             return reject(parseError)
           }
 
           if (result.nicovideo_thumb_response.$.status === 'fail') {
-            return reject(result.nicovideo_thumb_response.error[0].description[0])
+            return reject(
+              result.nicovideo_thumb_response.error[0].description[0]
+            )
           }
 
           const thumb = result.nicovideo_thumb_response.thumb[0]
@@ -91,7 +99,10 @@ export default class Nicovideo extends EventEmitter {
         const escapedTitle: string = data.video.title.replace(/\//g, '／')
         const filename = escapedTitle + '.' + data.video.movieType
         const filepath = path.resolve(path.join(targetPath, filename))
-        const exportedPath = await this.httpExport(data.video.smileInfo.url, filepath)
+        const exportedPath = await this.httpExport(
+          data.video.smileInfo.url,
+          filepath
+        )
         resolve(exportedPath)
       } catch (err) {
         reject(err)

@@ -44,7 +44,7 @@ test('fail when credentials missing', async t => {
 test('getthumbinfo', async t => {
   try {
     const thumbinfo = await new Nicovideo().thumbinfo(VIDEO_ID)
-    t.is(thumbinfo.watchURL, `http://www.nicovideo.jp/watch/${VIDEO_ID}`)
+    t.is(thumbinfo.watchURL, `https://www.nicovideo.jp/watch/${VIDEO_ID}`)
   } catch (err) {
     t.fail(err)
   }
@@ -70,6 +70,9 @@ test('fail to download video', async t => {
 
 test('download video', async t => {
   const filePath = await client.download(VIDEO_ID, '.')
-  t.is(filePath, path.resolve('./【ゆめにっき】クリプト・オブ･ザ・モノクロダンサー.mp4'))
+  t.is(
+    filePath,
+    path.resolve('./【ゆめにっき】クリプト・オブ･ザ・モノクロダンサー.mp4')
+  )
   t.pass()
 })
