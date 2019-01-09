@@ -1,7 +1,7 @@
 import test from 'ava'
 import assert from 'assert'
 import path from 'path'
-import { niconico, Nicovideo } from '../dist'
+import { niconico, Nicovideo } from '../lib'
 
 const EMAIL = process.env.NICONICO_EMAIL
 const PASSWORD = process.env.NICONICO_PASSWORD

@@ -28,7 +28,7 @@
     "url": "https://github.com/uetchy/niconico/issues"
   },
   "files": [
-    "dist"
+    "lib"
   ],
   "homepage": "https://github.com/uetchy/niconico#readme",
   "keywords": [
