@@ -1,0 +1,268 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>niconico</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">niconico</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="globals.html">Globals</a>
+				</li>
+			</ul>
+			<h1> niconico</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<h1 id="niconico">niconico</h1>
+				<p><a href="https://badge.fury.io/js/niconico"><img src="https://badge.fury.io/js/niconico.svg" alt="npm version"></a> <a href="https://travis-ci.org/uetchy/niconico"><img src="https://travis-ci.org/uetchy/niconico.svg?branch=master" alt="Build Status"></a> <a href="https://coveralls.io/github/uetchy/niconico?branch=master"><img src="https://coveralls.io/repos/github/uetchy/niconico/badge.svg?branch=master" alt="Coverage Status"></a></p>
+				<p>niconico API library for Node.JS, armed with Promises.</p>
+				<h2 id="usage">Usage</h2>
+				<pre><code>npm <span class="hljs-keyword">install</span> niconico</code></pre><pre><code class="language-js"><span class="hljs-keyword">const</span> {niconico, Nicovideo} = <span class="hljs-built_in">require</span>(<span class="hljs-string">'niconico'</span>);
+
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">downloadVideo</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">try</span> {
+        <span class="hljs-keyword">const</span> session = <span class="hljs-keyword">await</span> niconico.login(process.env.EMAIL, process.env.PASSWORD);
+        <span class="hljs-keyword">const</span> client = <span class="hljs-keyword">new</span> Nicovideo(session);
+
+        <span class="hljs-keyword">const</span> filePath = <span class="hljs-keyword">await</span> client.download(<span class="hljs-string">'sm28222588'</span>, <span class="hljs-string">'./videos'</span>));
+
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Downloaded:'</span>, filePath));
+    } <span class="hljs-keyword">catch</span> (err) {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Error:'</span>, err);
+    }
+}</code></pre>
+				<h2 id="api">API</h2>
+				<p>The APIs return Promises. You can chain them with <code>then</code> and <code>catch</code>.</p>
+				<h3 id="niconico-login-email-password-">niconico.login(email, password)</h3>
+				<p>Returns a session cookie.</p>
+				<h4 id="email">email</h4>
+				<p>Type: <code>string</code></p>
+				<h4 id="password">password</h4>
+				<p>Type: <code>string</code></p>
+				<h3 id="new-nicovideo-session-">new Nicovideo([session])</h3>
+				<p>Returns a nicovideo agent. If a session given, the agent authenticate as a signed user.</p>
+				<h4 id="session">session</h4>
+				<p>a session cookie given by <code>niconico.login</code>.</p>
+				<h3 id="nicovideo-download-videoid-outputdir-">nicovideo.download(videoID, outputDir)</h3>
+				<p>Download a video to local dir.</p>
+				<h4 id="videoid">videoID</h4>
+				<p>Type: <code>string</code></p>
+				<h4 id="outputdir">outputDir</h4>
+				<p>Type: <code>string</code></p>
+				<h3 id="nicovideo-watch-videoid-">nicovideo.watch(videoID)</h3>
+				<p>Fetch a /watch/ page and returns its metadata.</p>
+				<h4 id="videoid">videoID</h4>
+				<p>Type: <code>string</code></p>
+				<h3 id="nicovideo-thumbinfo-videoid-">nicovideo.thumbinfo(videoID)</h3>
+				<p>Returns thumbinfo. This doesn&#39;t requires <code>session</code>.</p>
+				<h4 id="videoid">videoID</h4>
+				<p>Type: <code>string</code></p>
+				<h3 id="nicovideo-httpexport-url-outputpath-">nicovideo.httpExport(url, outputPath)</h3>
+				<p>Download the video from <code>url</code> to <code>outputPath</code>.</p>
+				<h4 id="url">url</h4>
+				<p>Type: <code>string</code></p>
+				<h4 id="outputpath">outputPath</h4>
+				<p>Type: <code>string</code></p>
+				<h2 id="contributing">Contributing</h2>
+				<p>Before create a pull-request, you need to test using <code>npm test</code>.</p>
+				<pre><code><span class="hljs-attribute">NICONICO_EMAIL</span>=&lt;email&gt; <span class="hljs-attribute">NICONICO_PASSWORD</span>=&lt;password&gt; npm test</code></pre>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="globals.html"><em>Globals</em></a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-class">
+						<a href="classes/nicovideo.html" class="tsd-kind-icon">Nicovideo</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ad.html" class="tsd-kind-icon">Ad</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/commentcomposite.html" class="tsd-kind-icon">Comment<wbr>Composite</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/context.html" class="tsd-kind-icon">Context</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ids.html" class="tsd-kind-icon">Ids</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/item.html" class="tsd-kind-icon">Item</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/lead.html" class="tsd-kind-icon">Lead</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/livetopics.html" class="tsd-kind-icon">Live<wbr>Topics</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/maincommunity.html" class="tsd-kind-icon">Main<wbr>Community</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/owner.html" class="tsd-kind-icon">Owner</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ownernglist.html" class="tsd-kind-icon">OwnerNGList</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/player.html" class="tsd-kind-icon">Player</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/playlist.html" class="tsd-kind-icon">Playlist</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/smileinfo.html" class="tsd-kind-icon">Smile<wbr>Info</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/tag.html" class="tsd-kind-icon">Tag</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/tagrelatedbanner.html" class="tsd-kind-icon">Tag<wbr>Related<wbr>Banner</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/tagrelatedmarquee.html" class="tsd-kind-icon">Tag<wbr>Related<wbr>Marquee</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/thread.html" class="tsd-kind-icon">Thread</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/thumbinfo.html" class="tsd-kind-icon">Thumbinfo</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/video.html" class="tsd-kind-icon">Video</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/viewer.html" class="tsd-kind-icon">Viewer</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/watchdata.html" class="tsd-kind-icon">Watch<wbr>Data</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#login" class="tsd-kind-icon">login</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>

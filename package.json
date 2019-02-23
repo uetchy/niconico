@@ -5,24 +5,29 @@
   "author": "Yasuaki Uechi",
   "main": "dist",
   "scripts": {
+    "build": "tsc",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "docs": "yarn build && typedoc --mode file --out docs --excludeExternals --excludeNotExported --excludePrivate --exclude '**/__tests__/*' src && touch ./docs/.nojekyll",
     "test": "tsc && nyc ava --serial",
     "watch": "tsc -w"
   },
   "dependencies": {
-    "jsdom": "^13.1.0",
+    "jsdom": "^13.2.0",
     "request": "^2.87.0",
-    "request-promise": "^4.2.2",
+    "request-promise": "^4.2.4",
     "xml2js": "~0.4.5"
   },
   "devDependencies": {
-    "@types/jsdom": "^12.2.1",
+    "@types/jsdom": "^12.2.2",
+    "@types/nock": "^9.3.1",
     "@types/request-promise": "^4.1.41",
     "@types/xml2js": "^0.4.2",
-    "ava": "^1.0.1",
-    "coveralls": "^3.0.1",
-    "nyc": "^13.1.0",
-    "typescript": "^3.2.2"
+    "ava": "^1.2.1",
+    "coveralls": "^3.0.3",
+    "nock": "^10.0.6",
+    "nyc": "^13.3.0",
+    "typedoc": "^0.14.2",
+    "typescript": "^3.3.3333"
   },
   "bugs": {
     "url": "https://github.com/uetchy/niconico/issues"
