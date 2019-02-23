@@ -7,7 +7,7 @@ import { parseString, convertableToString } from 'xml2js'
 import { JSDOM } from 'jsdom'
 import { promisify } from 'util'
 
-import { WatchData, Thumbinfo } from 'nicovideo'
+import { WatchData, Thumbinfo } from './interfaces'
 
 export default class Nicovideo extends EventEmitter {
   cookieJar: request.CookieJar
@@ -79,7 +79,7 @@ export default class Nicovideo extends EventEmitter {
       const req = request(uri, { jar: this.cookieJar }).pipe(
         createWriteStream(targetPath)
       )
-      await new Promise(resolve => req.on('finish', resolve))
+      await new Promise((resolve) => req.on('finish', resolve))
       return targetPath
     } catch (err) {
       throw new Error(err)
