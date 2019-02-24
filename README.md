@@ -98,3 +98,7 @@ Before create a pull-request, you need to test using `npm test`.
 ```
 NICONICO_EMAIL=<email> NICONICO_PASSWORD=<password> npm test
 ```
+### Contributors
+
+ - Yasuaki Uechi
+ - Yuta Hiroto
