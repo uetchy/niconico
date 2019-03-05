@@ -64,21 +64,28 @@
 				<p><a href="https://badge.fury.io/js/niconico"><img src="https://badge.fury.io/js/niconico.svg" alt="npm version"></a> <a href="https://travis-ci.org/uetchy/niconico"><img src="https://travis-ci.org/uetchy/niconico.svg?branch=master" alt="Build Status"></a> <a href="https://coveralls.io/github/uetchy/niconico?branch=master"><img src="https://coveralls.io/repos/github/uetchy/niconico/badge.svg?branch=master" alt="Coverage Status"></a></p>
 				<p>niconico API library for Node.JS, armed with Promises.</p>
 				<h2 id="usage">Usage</h2>
-				<pre><code>npm <span class="hljs-keyword">install</span> niconico</code></pre><pre><code class="language-js"><span class="hljs-keyword">const</span> {niconico, Nicovideo} = <span class="hljs-built_in">require</span>(<span class="hljs-string">'niconico'</span>);
+				<pre><code>npm <span class="hljs-keyword">install</span> niconico</code></pre><pre><code class="language-js"><span class="hljs-keyword">const</span> { niconico, Nicovideo } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'niconico'</span>)
 
-<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">downloadVideo</span>(<span class="hljs-params"></span>) </span>{
-    <span class="hljs-keyword">try</span> {
-        <span class="hljs-keyword">const</span> session = <span class="hljs-keyword">await</span> niconico.login(process.env.EMAIL, process.env.PASSWORD);
-        <span class="hljs-keyword">const</span> client = <span class="hljs-keyword">new</span> Nicovideo(session);
+<span class="hljs-keyword">const</span> baseDir = <span class="hljs-string">'./videos'</span>
 
-        <span class="hljs-keyword">const</span> filePath = <span class="hljs-keyword">await</span> client.download(<span class="hljs-string">'sm28222588'</span>, <span class="hljs-string">'./videos'</span>));
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">downloadVideo</span>(<span class="hljs-params">videoID</span>) </span>{
+  <span class="hljs-keyword">try</span> {
+    <span class="hljs-keyword">const</span> session = <span class="hljs-keyword">await</span> niconico.login(
+      process.env.EMAIL,
+      process.env.PASSWORD
+    )
+    <span class="hljs-keyword">const</span> client = <span class="hljs-keyword">new</span> Nicovideo(session)
+    <span class="hljs-keyword">const</span> filePath = <span class="hljs-keyword">await</span> client.download(videoID, baseDir)
 
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Downloaded:'</span>, filePath));
-    } <span class="hljs-keyword">catch</span> (err) {
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Error:'</span>, err);
-    }
-}</code></pre>
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Downloaded:'</span>, filePath)
+  } <span class="hljs-keyword">catch</span> (err) {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Error:'</span>, err)
+  }
+}
+
+downloadVideo(<span class="hljs-string">'sm28222588'</span>)</code></pre>
 				<h2 id="api">API</h2>
+				<p><a href="http://uetchy.github.io/niconico/">API Documents</a></p>
 				<p>The APIs return Promises. You can chain them with <code>then</code> and <code>catch</code>.</p>
 				<h3 id="niconico-login-email-password-">niconico.login(email, password)</h3>
 				<p>Returns a session cookie.</p>
@@ -112,7 +119,11 @@
 				<p>Type: <code>string</code></p>
 				<h2 id="contributing">Contributing</h2>
 				<p>Before create a pull-request, you need to test using <code>npm test</code>.</p>
-				<pre><code><span class="hljs-attribute">NICONICO_EMAIL</span>=&lt;email&gt; <span class="hljs-attribute">NICONICO_PASSWORD</span>=&lt;password&gt; npm test</code></pre>
+				<pre><code><span class="hljs-attribute">NICONICO_EMAIL</span>=&lt;email&gt; <span class="hljs-attribute">NICONICO_PASSWORD</span>=&lt;password&gt; npm test</code></pre><h3 id="contributors">Contributors</h3>
+				<ul>
+					<li>Yasuaki Uechi</li>
+					<li>Yuta Hiroto</li>
+				</ul>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -129,67 +140,67 @@
 						<a href="classes/nicovideo.html" class="tsd-kind-icon">Nicovideo</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/ad.html" class="tsd-kind-icon">Ad</a>
+						<a href="interfaces/iad.html" class="tsd-kind-icon">IAd</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/commentcomposite.html" class="tsd-kind-icon">Comment<wbr>Composite</a>
+						<a href="interfaces/icommentcomposite.html" class="tsd-kind-icon">IComment<wbr>Composite</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/context.html" class="tsd-kind-icon">Context</a>
+						<a href="interfaces/icontext.html" class="tsd-kind-icon">IContext</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/ids.html" class="tsd-kind-icon">Ids</a>
+						<a href="interfaces/iids.html" class="tsd-kind-icon">IIds</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/item.html" class="tsd-kind-icon">Item</a>
+						<a href="interfaces/iitem.html" class="tsd-kind-icon">IItem</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/lead.html" class="tsd-kind-icon">Lead</a>
+						<a href="interfaces/ilead.html" class="tsd-kind-icon">ILead</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/livetopics.html" class="tsd-kind-icon">Live<wbr>Topics</a>
+						<a href="interfaces/ilivetopics.html" class="tsd-kind-icon">ILive<wbr>Topics</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/maincommunity.html" class="tsd-kind-icon">Main<wbr>Community</a>
+						<a href="interfaces/imaincommunity.html" class="tsd-kind-icon">IMain<wbr>Community</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/owner.html" class="tsd-kind-icon">Owner</a>
+						<a href="interfaces/iowner.html" class="tsd-kind-icon">IOwner</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/ownernglist.html" class="tsd-kind-icon">OwnerNGList</a>
+						<a href="interfaces/iownernglist.html" class="tsd-kind-icon">IOwnerNGList</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/player.html" class="tsd-kind-icon">Player</a>
+						<a href="interfaces/iplayer.html" class="tsd-kind-icon">IPlayer</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/playlist.html" class="tsd-kind-icon">Playlist</a>
+						<a href="interfaces/iplaylist.html" class="tsd-kind-icon">IPlaylist</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/smileinfo.html" class="tsd-kind-icon">Smile<wbr>Info</a>
+						<a href="interfaces/ismileinfo.html" class="tsd-kind-icon">ISmile<wbr>Info</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/tag.html" class="tsd-kind-icon">Tag</a>
+						<a href="interfaces/itag.html" class="tsd-kind-icon">ITag</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/tagrelatedbanner.html" class="tsd-kind-icon">Tag<wbr>Related<wbr>Banner</a>
+						<a href="interfaces/itagrelatedbanner.html" class="tsd-kind-icon">ITag<wbr>Related<wbr>Banner</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/tagrelatedmarquee.html" class="tsd-kind-icon">Tag<wbr>Related<wbr>Marquee</a>
+						<a href="interfaces/itagrelatedmarquee.html" class="tsd-kind-icon">ITag<wbr>Related<wbr>Marquee</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/thread.html" class="tsd-kind-icon">Thread</a>
+						<a href="interfaces/ithread.html" class="tsd-kind-icon">IThread</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/thumbinfo.html" class="tsd-kind-icon">Thumbinfo</a>
+						<a href="interfaces/ithumbinfo.html" class="tsd-kind-icon">IThumbinfo</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/video.html" class="tsd-kind-icon">Video</a>
+						<a href="interfaces/ivideo.html" class="tsd-kind-icon">IVideo</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/viewer.html" class="tsd-kind-icon">Viewer</a>
+						<a href="interfaces/iviewer.html" class="tsd-kind-icon">IViewer</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/watchdata.html" class="tsd-kind-icon">Watch<wbr>Data</a>
+						<a href="interfaces/iwatchdata.html" class="tsd-kind-icon">IWatch<wbr>Data</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#login" class="tsd-kind-icon">login</a>

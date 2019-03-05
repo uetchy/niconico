@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Thumbinfo | niconico</title>
+	<title>IItem | niconico</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -52,10 +52,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="thumbinfo.html">Thumbinfo</a>
+					<a href="iitem.html">IItem</a>
 				</li>
 			</ul>
-			<h1>Interface Thumbinfo</h1>
+			<h1>Interface IItem</h1>
 		</div>
 	</div>
 </header>
@@ -66,7 +66,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">Thumbinfo</span>
+						<span class="target">IItem</span>
 					</li>
 				</ul>
 			</section>
@@ -77,11 +77,14 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="thumbinfo.html#description" class="tsd-kind-icon">description</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="thumbinfo.html#movietype" class="tsd-kind-icon">movie<wbr>Type</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="thumbinfo.html#title" class="tsd-kind-icon">title</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="thumbinfo.html#videoid" class="tsd-kind-icon">videoID</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="thumbinfo.html#watchurl" class="tsd-kind-icon">watchURL</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iitem.html#communityid" class="tsd-kind-icon">community<wbr>Id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iitem.html#communityname" class="tsd-kind-icon">community<wbr>Name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iitem.html#elapsedtimem" class="tsd-kind-icon">elapsed<wbr>TimeM</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iitem.html#id" class="tsd-kind-icon">id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iitem.html#ishigh" class="tsd-kind-icon">is<wbr>High</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iitem.html#point" class="tsd-kind-icon">point</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iitem.html#thumbnailurl" class="tsd-kind-icon">thumbnailURL</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iitem.html#title" class="tsd-kind-icon">title</a></li>
 							</ul>
 						</section>
 					</div>
@@ -90,22 +93,72 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="description" class="tsd-anchor"></a>
-					<h3>description</h3>
-					<div class="tsd-signature tsd-kind-icon">description<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="communityid" class="tsd-anchor"></a>
+					<h3>community<wbr>Id</h3>
+					<div class="tsd-signature tsd-kind-icon">community<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in interfaces.ts:242</li>
+							<li>Defined in <a href="https://github.com/uetchy/niconico/blob/6a7e0c9/src/interfaces.ts#L212">interfaces.ts:212</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="movietype" class="tsd-anchor"></a>
-					<h3>movie<wbr>Type</h3>
-					<div class="tsd-signature tsd-kind-icon">movie<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="communityname" class="tsd-anchor"></a>
+					<h3>community<wbr>Name</h3>
+					<div class="tsd-signature tsd-kind-icon">community<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in interfaces.ts:244</li>
+							<li>Defined in <a href="https://github.com/uetchy/niconico/blob/6a7e0c9/src/interfaces.ts#L213">interfaces.ts:213</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="elapsedtimem" class="tsd-anchor"></a>
+					<h3>elapsed<wbr>TimeM</h3>
+					<div class="tsd-signature tsd-kind-icon">elapsed<wbr>TimeM<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/uetchy/niconico/blob/6a7e0c9/src/interfaces.ts#L211">interfaces.ts:211</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="id" class="tsd-anchor"></a>
+					<h3>id</h3>
+					<div class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/uetchy/niconico/blob/6a7e0c9/src/interfaces.ts#L206">interfaces.ts:206</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="ishigh" class="tsd-anchor"></a>
+					<h3>is<wbr>High</h3>
+					<div class="tsd-signature tsd-kind-icon">is<wbr>High<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/uetchy/niconico/blob/6a7e0c9/src/interfaces.ts#L210">interfaces.ts:210</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="point" class="tsd-anchor"></a>
+					<h3>point</h3>
+					<div class="tsd-signature tsd-kind-icon">point<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/uetchy/niconico/blob/6a7e0c9/src/interfaces.ts#L209">interfaces.ts:209</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="thumbnailurl" class="tsd-anchor"></a>
+					<h3>thumbnailURL</h3>
+					<div class="tsd-signature tsd-kind-icon">thumbnailURL<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/uetchy/niconico/blob/6a7e0c9/src/interfaces.ts#L208">interfaces.ts:208</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -115,27 +168,7 @@
 					<div class="tsd-signature tsd-kind-icon">title<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in interfaces.ts:241</li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="videoid" class="tsd-anchor"></a>
-					<h3>videoID</h3>
-					<div class="tsd-signature tsd-kind-icon">videoID<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in interfaces.ts:240</li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="watchurl" class="tsd-anchor"></a>
-					<h3>watchURL</h3>
-					<div class="tsd-signature tsd-kind-icon">watchURL<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in interfaces.ts:243</li>
+							<li>Defined in <a href="https://github.com/uetchy/niconico/blob/6a7e0c9/src/interfaces.ts#L207">interfaces.ts:207</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -155,88 +188,97 @@
 						<a href="../classes/nicovideo.html" class="tsd-kind-icon">Nicovideo</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="ad.html" class="tsd-kind-icon">Ad</a>
+						<a href="iad.html" class="tsd-kind-icon">IAd</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="commentcomposite.html" class="tsd-kind-icon">Comment<wbr>Composite</a>
+						<a href="icommentcomposite.html" class="tsd-kind-icon">IComment<wbr>Composite</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="context.html" class="tsd-kind-icon">Context</a>
+						<a href="icontext.html" class="tsd-kind-icon">IContext</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="ids.html" class="tsd-kind-icon">Ids</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="item.html" class="tsd-kind-icon">Item</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="lead.html" class="tsd-kind-icon">Lead</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="livetopics.html" class="tsd-kind-icon">Live<wbr>Topics</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="maincommunity.html" class="tsd-kind-icon">Main<wbr>Community</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="owner.html" class="tsd-kind-icon">Owner</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="ownernglist.html" class="tsd-kind-icon">OwnerNGList</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="player.html" class="tsd-kind-icon">Player</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="playlist.html" class="tsd-kind-icon">Playlist</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="smileinfo.html" class="tsd-kind-icon">Smile<wbr>Info</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="tag.html" class="tsd-kind-icon">Tag</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="tagrelatedbanner.html" class="tsd-kind-icon">Tag<wbr>Related<wbr>Banner</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="tagrelatedmarquee.html" class="tsd-kind-icon">Tag<wbr>Related<wbr>Marquee</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="thread.html" class="tsd-kind-icon">Thread</a>
+						<a href="iids.html" class="tsd-kind-icon">IIds</a>
 					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface">
-						<a href="thumbinfo.html" class="tsd-kind-icon">Thumbinfo</a>
+						<a href="iitem.html" class="tsd-kind-icon">IItem</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="thumbinfo.html#description" class="tsd-kind-icon">description</a>
+								<a href="iitem.html#communityid" class="tsd-kind-icon">community<wbr>Id</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="thumbinfo.html#movietype" class="tsd-kind-icon">movie<wbr>Type</a>
+								<a href="iitem.html#communityname" class="tsd-kind-icon">community<wbr>Name</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="thumbinfo.html#title" class="tsd-kind-icon">title</a>
+								<a href="iitem.html#elapsedtimem" class="tsd-kind-icon">elapsed<wbr>TimeM</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="thumbinfo.html#videoid" class="tsd-kind-icon">videoID</a>
+								<a href="iitem.html#id" class="tsd-kind-icon">id</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="thumbinfo.html#watchurl" class="tsd-kind-icon">watchURL</a>
+								<a href="iitem.html#ishigh" class="tsd-kind-icon">is<wbr>High</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="iitem.html#point" class="tsd-kind-icon">point</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="iitem.html#thumbnailurl" class="tsd-kind-icon">thumbnailURL</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="iitem.html#title" class="tsd-kind-icon">title</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-interface">
-						<a href="video.html" class="tsd-kind-icon">Video</a>
+						<a href="ilead.html" class="tsd-kind-icon">ILead</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="viewer.html" class="tsd-kind-icon">Viewer</a>
+						<a href="ilivetopics.html" class="tsd-kind-icon">ILive<wbr>Topics</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="watchdata.html" class="tsd-kind-icon">Watch<wbr>Data</a>
+						<a href="imaincommunity.html" class="tsd-kind-icon">IMain<wbr>Community</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="iowner.html" class="tsd-kind-icon">IOwner</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="iownernglist.html" class="tsd-kind-icon">IOwnerNGList</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="iplayer.html" class="tsd-kind-icon">IPlayer</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="iplaylist.html" class="tsd-kind-icon">IPlaylist</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="ismileinfo.html" class="tsd-kind-icon">ISmile<wbr>Info</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="itag.html" class="tsd-kind-icon">ITag</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="itagrelatedbanner.html" class="tsd-kind-icon">ITag<wbr>Related<wbr>Banner</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="itagrelatedmarquee.html" class="tsd-kind-icon">ITag<wbr>Related<wbr>Marquee</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="ithread.html" class="tsd-kind-icon">IThread</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="ithumbinfo.html" class="tsd-kind-icon">IThumbinfo</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="ivideo.html" class="tsd-kind-icon">IVideo</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="iviewer.html" class="tsd-kind-icon">IViewer</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="iwatchdata.html" class="tsd-kind-icon">IWatch<wbr>Data</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="../globals.html#login" class="tsd-kind-icon">login</a>
