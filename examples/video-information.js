@@ -16,4 +16,4 @@ async function main(videoID) {
   }
 }
 
-main(process.argv[2])
+main(process.argv[2]).catch((err) => console.error(err.message))

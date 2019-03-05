@@ -1,13 +1,12 @@
 #!/usr/bin/env node
-// example: $ EMAIL=<email> PASSWORD=<password> node ./download-video.js <video-id>
-
+// usage: $ NICONICO_EMAIL=<email> NICONICO_PASSWORD=<password> node ./download-video.js <video-id>
 const assert = require('assert')
 const { niconico, Nicovideo } = require('..')
 
 async function main(email, password, videoID) {
-  assert(email, 'no EMAIL given')
-  assert(password, 'no PASSWORD given')
-  assert(videoID, 'no videoID given')
+  assert(email, 'no email given')
+  assert(password, 'no password given')
+  assert(videoID, 'no video id given')
 
   try {
     const session = await niconico.login(email, password)
@@ -19,4 +18,8 @@ async function main(email, password, videoID) {
   }
 }
 
-main(process.env.EMAIL, process.env.PASSWORD, process.argv[2])
+main(
+  process.env.NICONICO_EMAIL,
+  process.env.NICONICO_PASSWORD,
+  process.argv[2]
+).catch((err) => console.error(err.message))
