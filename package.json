@@ -3,11 +3,12 @@
   "description": "A nicovideo plug-in for NodeJS",
   "version": "1.1.2",
   "author": "Yasuaki Uechi",
-  "main": "dist",
+  "main": "lib",
   "scripts": {
     "build": "tsc",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "docs": "yarn build && typedoc --mode file --out docs --excludeExternals --excludeNotExported --excludePrivate --exclude '**/__tests__/*' src && touch ./docs/.nojekyll",
+    "lint": "tslint --project ./tsconfig.json --fix && prettier '{examples,src,test}/**/*.{ts,js}' --write",
     "test": "tsc && nyc ava --serial",
     "watch": "tsc -w"
   },
