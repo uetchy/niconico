@@ -9,14 +9,14 @@ export async function login(
     'https://account.nicovideo.jp/api/v1/login?site=niconico&next_url='
   const jar = request.jar()
   try {
-    const res = await post(requestURL, {
-      jar: jar,
+    await post(requestURL, {
       form: {
         mail_tel: email,
-        password: password,
+        password,
       },
-      simple: false,
+      jar,
       resolveWithFullResponse: true,
+      simple: false,
     })
 
     if (!jar.getCookieString('https://nicovideo.jp').includes('user_session')) {

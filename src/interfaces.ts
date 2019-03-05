@@ -1,11 +1,11 @@
-export interface SmileInfo {
+export interface ISmileInfo {
   url: string
   isSlowLine: boolean
   currentQualityId: string
   qualityIds: string[]
 }
 
-export interface Video {
+export interface IVideo {
   id: string
   title: string
   originalTitle: string
@@ -44,30 +44,30 @@ export interface Video {
   isNoIchiba: boolean
   isOfficial: boolean
   isMonetized: boolean
-  smileInfo: SmileInfo
+  smileInfo: ISmileInfo
 }
 
-export interface Player {
+export interface IPlayer {
   playerInfoXMLUpdateTIme: number
   isContinuous: boolean
 }
 
-export interface Ids {
+export interface IIds {
   default: string
   nicos?: any
   community?: any
 }
 
-export interface Thread {
+export interface IThread {
   commentCount: number
   hasOwnerThread?: any
   mymemoryLanguage?: any
   serverUrl: string
   subServerUrl: string
-  ids: Ids
+  ids: IIds
 }
 
-export interface CommentComposite {
+export interface ICommentComposite {
   id: number
   fork: number
   isActive: boolean
@@ -78,7 +78,7 @@ export interface CommentComposite {
   label: string
 }
 
-export interface Tag {
+export interface ITag {
   id: string
   name: string
   isCategory: boolean
@@ -87,13 +87,13 @@ export interface Tag {
   isLocked: boolean
 }
 
-export interface Playlist {
+export interface IPlaylist {
   watchId: string
   referer?: any
   parameter?: any
 }
 
-export interface Owner {
+export interface IOwner {
   id: string
   nickname: string
   iconURL: string
@@ -104,7 +104,7 @@ export interface Owner {
   isUserOpenListPublic: boolean
 }
 
-export interface Viewer {
+export interface IViewer {
   id: number
   nickname: string
   prefecture: number
@@ -118,44 +118,44 @@ export interface Viewer {
   nicosid: string
 }
 
-export interface MainCommunity {
+export interface IMainCommunity {
   id: number
   name: string
   threadType?: any
   globalId?: any
 }
 
-export interface Ad {
+export interface IAd {
   vastMetaData?: any
 }
 
-export interface TagRelatedMarquee {
+export interface ITagRelatedMarquee {
   id: string
   url: string
   title: string
 }
 
-export interface TagRelatedBanner {
+export interface ITagRelatedBanner {
   id: string
   url: string
   title: string
   thumbnailURL: string
 }
 
-export interface Lead {
-  tagRelatedMarquee: TagRelatedMarquee
-  tagRelatedBanner: TagRelatedBanner
+export interface ILead {
+  tagRelatedMarquee: ITagRelatedMarquee
+  tagRelatedBanner: ITagRelatedBanner
   nicosdkApplicationBanner?: any
   videoEndBannerIn?: any
   videoEndOverlay?: any
 }
 
-export interface OwnerNGList {
+export interface IOwnerNGList {
   source: string
   destination: string
 }
 
-export interface Context {
+export interface IContext {
   playFrom?: any
   initialPlaybackPosition?: any
   initialPlaybackType?: any
@@ -197,12 +197,12 @@ export interface Context {
   yesterdayRank?: any
   highestRank: number
   isMyMemory: boolean
-  ownerNGList: OwnerNGList[]
+  ownerNGList: IOwnerNGList[]
   linkedChannelVideos?: any
   isAllowEmbedPlayer: boolean
 }
 
-export interface Item {
+export interface IItem {
   id: string
   title: string
   thumbnailURL: string
@@ -213,30 +213,30 @@ export interface Item {
   communityName: string
 }
 
-export interface LiveTopics {
-  items: Item[]
+export interface ILiveTopics {
+  items: IItem[]
 }
 
-export interface WatchData {
-  video: Video
-  player: Player
-  thread: Thread
-  commentComposite: CommentComposite[]
-  tags: Tag[]
-  playlist: Playlist
-  owner: Owner
-  viewer: Viewer
+export interface IWatchData {
+  video: IVideo
+  player: IPlayer
+  thread: IThread
+  commentComposite: ICommentComposite[]
+  tags: ITag[]
+  playlist: IPlaylist
+  owner: IOwner
+  viewer: IViewer
   community?: any
-  mainCommunity: MainCommunity
+  mainCommunity: IMainCommunity
   channel?: any
-  ad: Ad
-  lead: Lead
+  ad: IAd
+  lead: ILead
   maintenance?: any
-  context: Context
-  liveTopics: LiveTopics
+  context: IContext
+  liveTopics: ILiveTopics
 }
 
-export interface Thumbinfo {
+export interface IThumbinfo {
   videoID: string
   title: string
   description: string

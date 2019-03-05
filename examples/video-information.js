@@ -10,11 +10,10 @@ async function main(videoID) {
 
   try {
     const thumbinfo = await client.thumbinfo(videoID)
+    console.log(JSON.stringify(thumbinfo, null, 2))
   } catch (err) {
     console.error(err)
   }
-
-  console.log(JSON.stringify(thumbinfo, null, 2))
 }
 
 main(process.argv[2])

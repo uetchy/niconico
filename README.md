@@ -11,23 +11,31 @@ npm install niconico
 ```
 
 ```js
-const {niconico, Nicovideo} = require('niconico');
+const { niconico, Nicovideo } = require('niconico')
 
-async function downloadVideo() {
-	try {
-		const session = await niconico.login(process.env.EMAIL, process.env.PASSWORD);
-		const client = new Nicovideo(session);
+const baseDir = './videos'
 
-		const filePath = await client.download('sm28222588', './videos'));
+async function downloadVideo(videoID) {
+  try {
+    const session = await niconico.login(
+      process.env.EMAIL,
+      process.env.PASSWORD
+    )
+    const client = new Nicovideo(session)
+    const filePath = await client.download(videoID, baseDir)
 
-		console.log('Downloaded:', filePath));
-	} catch (err) {
-		console.log('Error:', err);
-	}
+    console.log('Downloaded:', filePath)
+  } catch (err) {
+    console.log('Error:', err)
+  }
 }
+
+downloadVideo('sm28222588')
 ```
 
 ## API
+
+[API Documents](http://uetchy.github.io/niconico/)
 
 The APIs return Promises. You can chain them with `then` and `catch`.
 
@@ -98,7 +106,8 @@ Before create a pull-request, you need to test using `npm test`.
 ```
 NICONICO_EMAIL=<email> NICONICO_PASSWORD=<password> npm test
 ```
+
 ### Contributors
 
- - Yasuaki Uechi
- - Yuta Hiroto
+- Yasuaki Uechi
+- Yuta Hiroto
