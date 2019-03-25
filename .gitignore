@@ -1,6 +1,7 @@
 .env
 *.mp4
 /lib
+/tests/__playbacks__
 
 # Created by https://www.gitignore.io/api/node
 
