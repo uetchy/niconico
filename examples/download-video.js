@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 // usage: $ NICONICO_EMAIL=<email> NICONICO_PASSWORD=<password> node ./download-video.js <video-id>
+
 const assert = require('assert')
 const { niconico, Nicovideo } = require('..')
 
