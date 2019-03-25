@@ -1,30 +1,30 @@
-import request from 'request'
-import { post } from 'request-promise'
+import axios from 'axios'
+import axiosCookieJarSupport from 'axios-cookiejar-support'
+import tough from 'tough-cookie'
+
+axiosCookieJarSupport(axios)
+axios.defaults.withCredentials = true
 
 export async function login(
   email: string,
   password: string
-): Promise<request.CookieJar> {
+): Promise<tough.CookieJar> {
   const requestURL =
     'https://account.nicovideo.jp/api/v1/login?site=niconico&next_url='
-  const jar = request.jar()
-  try {
-    await post(requestURL, {
-      form: {
-        mail_tel: email,
-        password,
-      },
-      jar,
-      resolveWithFullResponse: true,
-      simple: false,
-    })
+  const cookieJar = new tough.CookieJar()
+  axios.defaults.jar = cookieJar
+  await axios.post(requestURL, {
+    mail_tel: email,
+    password,
+  })
 
-    if (!jar.getCookieString('https://nicovideo.jp').includes('user_session')) {
-      throw new Error('invalid credentials')
-    }
-
-    return jar
-  } catch (err) {
-    throw new Error(err)
+  if (
+    !cookieJar
+      .getCookieStringSync('https://nicovideo.jp')
+      .includes('user_session')
+  ) {
+    throw new Error('invalid credentials')
   }
+
+  return cookieJar
 }
