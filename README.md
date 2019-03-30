@@ -1,6 +1,13 @@
 # niconico
 
-[![npm version](https://badge.fury.io/js/niconico.svg)](https://badge.fury.io/js/niconico) [![Build Status](https://travis-ci.org/uetchy/niconico.svg?branch=master)](https://travis-ci.org/uetchy/niconico) [![Coverage Status](https://coveralls.io/repos/github/uetchy/niconico/badge.svg?branch=master)](https://coveralls.io/github/uetchy/niconico?branch=master)
+[![npm version]][npmjs] [![Build Status]][Travis] [![Coverage Status]][Coveralls]
+
+[npm version]: https://badge.fury.io/js/niconico.svg
+[npmjs]: https://www.npmjs.com/package/niconico
+[Build Status]: https://travis-ci.org/uetchy/niconico.svg?branch=master
+[Travis]: https://travis-ci.org/uetchy/niconico
+[Coverage Status]: https://coveralls.io/repos/github/uetchy/niconico/badge.svg?branch=master
+[Coveralls]: https://coveralls.io/github/uetchy/niconico?branch=master
 
 niconico API library for Node.JS, armed with Promises.
 
@@ -53,7 +60,7 @@ Type: `string`
 
 ### new Nicovideo([session])
 
-Returns a nicovideo agent. If a session given, the agent authenticate as a signed user.
+Returns a nicovideo agent. If a session is given, the agent will be authenticated and act as a signed user.
 
 #### session
 
