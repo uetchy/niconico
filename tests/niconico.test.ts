@@ -16,7 +16,6 @@ test('success to sign in', async () => {
     .getCookiesSync('https://nicovideo.jp')
     .map((l) => l.toJSON())
     .map((c) => c.key) as string[]
-
   expect(json.includes('nicosid')).toBeTruthy()
   expect(json.includes('user_session')).toBeTruthy()
 })
