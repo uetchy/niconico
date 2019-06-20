@@ -4,8 +4,8 @@
 
 [npm version]: https://badge.fury.io/js/niconico.svg
 [npmjs]: https://www.npmjs.com/package/niconico
-[Build Status]: https://travis-ci.org/uetchy/niconico.svg?branch=master
-[Travis]: https://travis-ci.org/uetchy/niconico
+[Build Status]: https://travis-ci.com/uetchy/niconico.svg?branch=master
+[Travis]: https://travis-ci.com/uetchy/niconico
 [Coverage Status]: https://coveralls.io/repos/github/uetchy/niconico/badge.svg?branch=master
 [Coveralls]: https://coveralls.io/github/uetchy/niconico?branch=master
 
