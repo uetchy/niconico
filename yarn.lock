@@ -656,9 +656,9 @@ aws4@^1.8.0:
   integrity sha512-ReZxvNHIOv88FlT7rxcXIIC0fPt4KZqZbOlivyWtXLt8ESx84zd3kMC6iK5jVeS2qt+g7ftS7ye4fi06X5rtRQ==
 
 axios-cookiejar-support@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/axios-cookiejar-support/-/axios-cookiejar-support-0.5.0.tgz#f4fe02eeb5513285dc8844353f8218736e6bdd7c"
-  integrity sha512-QrAmYWkdymQeDc62jcPkKmYbVnM4hihAUpn844ShERxjmF+PLomfWGWsB/mxepv4JBBzhkIZ2utHohYtDDbUJw==
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/axios-cookiejar-support/-/axios-cookiejar-support-0.5.1.tgz#0622c2849cefbaf8424a50b630283231b62fc277"
+  integrity sha512-mmMbNDjpkAKlyxVOYjkpvV6rDRoSjBXwHbfkWvnsplRTGYCergbHvZInRB1G3lqumllUQwo0A4uPoqEsYfzq3A==
   dependencies:
     "@types/tough-cookie" "^2.3.3"
     is-redirect "^1.0.0"
