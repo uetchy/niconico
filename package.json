@@ -19,7 +19,7 @@
     "filenamify": "^4.1.0",
     "jest": "^25.1.0",
     "jsdom": "^16.0.1",
-    "tough-cookie": "^3.0.1",
+    "tough-cookie": "^4.0.0",
     "xml2js": "~0.4.5"
   },
   "devDependencies": {
