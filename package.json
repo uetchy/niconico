@@ -23,7 +23,7 @@
     "xml2js": "~0.4.5"
   },
   "devDependencies": {
-    "@types/jest": "^25.1.1",
+    "@types/jest": "^26.0.0",
     "@types/jsdom": "^16.1.0",
     "@types/nock": "^11.1.0",
     "@types/request-promise": "^4.1.44",
