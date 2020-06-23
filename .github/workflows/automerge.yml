@@ -27,3 +27,4 @@ jobs:
           GITHUB_TOKEN: '${{ github.token }}'
           MERGE_FILTER_AUTHOR: 'dependabot'
           MERGE_METHOD: 'squash'
+          MERGE_LABELS: ''
