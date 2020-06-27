@@ -1,13 +1,16 @@
 # niconico
 
-[![npm version]][npmjs] [![Build Status]][Travis] [![Coverage Status]][Coveralls]
+[![npm version]][npmjs]
+![npm: total downloads](https://badgen.net/npm/dt/niconico)
+[![Build Status]][travis]
+[![Coverage Status]][coveralls]
 
-[npm version]: https://badge.fury.io/js/niconico.svg
+[npm version]: https://badgen.net/npm/v/niconico
 [npmjs]: https://www.npmjs.com/package/niconico
-[Build Status]: https://travis-ci.com/uetchy/niconico.svg?branch=master
-[Travis]: https://travis-ci.com/uetchy/niconico
-[Coverage Status]: https://coveralls.io/repos/github/uetchy/niconico/badge.svg?branch=master
-[Coveralls]: https://coveralls.io/github/uetchy/niconico?branch=master
+[build status]: https://travis-ci.com/uetchy/niconico.svg?branch=master
+[travis]: https://travis-ci.com/uetchy/niconico
+[coverage status]: https://coveralls.io/repos/github/uetchy/niconico/badge.svg?branch=master
+[coveralls]: https://coveralls.io/github/uetchy/niconico?branch=master
 
 niconico API library for Node.JS, armed with Promises.
 
