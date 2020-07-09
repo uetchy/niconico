@@ -5,6 +5,7 @@ import filenamify from 'filenamify'
 import { createWriteStream } from 'fs'
 import { JSDOM } from 'jsdom'
 import { join, resolve } from 'path'
+import { Readable } from 'stream'
 import tough from 'tough-cookie'
 import { promisify } from 'util'
 import { convertableToString, parseString } from 'xml2js'
@@ -70,6 +71,14 @@ export default class Nicovideo extends EventEmitter {
     const req = response.data.pipe(createWriteStream(targetPath))
     await new Promise((resolve) => req.on('finish', resolve))
     return targetPath
+  }
+
+  public async stream(videoID: string): Promise<Readable> {
+    const data = await this.watch(videoID)
+    const uri = data.video.smileInfo.url
+    await this.client.head(uri)
+    const response = await this.client.get(uri, { responseType: 'stream' })
+    return response.data
   }
 
   public async download(videoID: string, targetPath: string): Promise<string> {

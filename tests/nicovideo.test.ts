@@ -51,3 +51,13 @@ test('download video', async () => {
     path.resolve('./【ゆめにっき】クリプト・オブ･ザ・モノクロダンサー.mp4')
   )
 }, 60000)
+
+test('stream video', async () => {
+  const stream = await client.stream(VIDEO_ID)
+  const chunks = []
+  for await (const chunk of stream) {
+    chunks.push(chunk)
+  }
+  const buffer = Buffer.concat(chunks)
+  expect(buffer.length).toBeGreaterThan(1048576)
+}, 60000)
