@@ -1,9 +1,10 @@
 # niconico
 
 [![npm version]][npmjs]
-![npm: total downloads](https://badgen.net/npm/dt/niconico)
+[![npm: total downloads](https://badgen.net/npm/dt/niconico)][npmjs]
 [![Build Status]][travis]
 [![Coverage Status]][coveralls]
+[![docs]][docs-url]
 
 [npm version]: https://badgen.net/npm/v/niconico
 [npmjs]: https://www.npmjs.com/package/niconico
@@ -11,6 +12,8 @@
 [travis]: https://travis-ci.com/uetchy/niconico
 [coverage status]: https://coveralls.io/repos/github/uetchy/niconico/badge.svg?branch=master
 [coveralls]: https://coveralls.io/github/uetchy/niconico?branch=master
+[docs]: https://badgen.net/badge/documentation/available/purple
+[docs-url]: https://uetchy.github.io/niconico/
 
 niconico API library for Node.JS, armed with Promises.
 
@@ -45,7 +48,7 @@ downloadVideo('sm28222588')
 
 ## API
 
-[API Documents](http://uetchy.github.io/niconico/)
+[API Documents](https://uetchy.github.io/niconico/)
 
 The APIs return Promises. You can chain them with `then` and `catch`.
 
