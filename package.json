@@ -2,7 +2,7 @@
   "name": "niconico",
   "description": "A nicovideo plug-in for NodeJS",
   "version": "1.2.0",
-  "author": "Yasuaki Uechi",
+  "author": "Yasuaki Uechi <y@uechi.io>",
   "scripts": {
     "build": "shx rm -rf lib && tsc",
     "coverage": "cat ./coverage/lcov.info | coveralls",
