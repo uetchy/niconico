@@ -8,13 +8,13 @@ const EMAIL = process.env.NICONICO_EMAIL
 const PASSWORD = process.env.NICONICO_PASSWORD
 assert(EMAIL, 'set NICONICO_EMAIL')
 assert(PASSWORD, 'set NICONICO_PASSWORD')
-const VIDEO_ID = 'sm28222588'
+const VIDEO_ID = 'sm25434075'
 
 setup(__dirname)
 
 let client: Nicovideo
 
-beforeEach(async () => {
+beforeAll(async () => {
   const session = await niconico.login(EMAIL, PASSWORD)
   client = new Nicovideo(session)
 })
@@ -22,7 +22,7 @@ beforeEach(async () => {
 test('get watch data containers', async () => {
   const data = await client.watch(VIDEO_ID)
   expect(data.video.title).toEqual(
-    '【ゆめにっき】クリプト・オブ･ザ・モノクロダンサー'
+    'ゆめにっきワールド 10thアニバーサリー  birdmania reach'
   )
 })
 
@@ -48,7 +48,7 @@ test('fail to download video', async () => {
 test('download video', async () => {
   const filePath = await client.download(VIDEO_ID, '.')
   expect(filePath).toEqual(
-    path.resolve('./【ゆめにっき】クリプト・オブ･ザ・モノクロダンサー.mp4')
+    path.resolve('./ゆめにっきワールド 10thアニバーサリー  birdmania reach.mp4')
   )
 }, 60000)
 
