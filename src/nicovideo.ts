@@ -5,10 +5,12 @@ import filenamify from 'filenamify'
 import { createWriteStream } from 'fs'
 import { JSDOM } from 'jsdom'
 import { join, resolve } from 'path'
+import { Readable } from 'stream'
 import tough from 'tough-cookie'
 import { promisify } from 'util'
 import { convertableToString, parseString } from 'xml2js'
 import { IThumbinfo, IWatchData } from './interfaces'
+import { asyncPipe } from './util'
 
 export default class Nicovideo extends EventEmitter {
   private client: AxiosInstance
@@ -64,22 +66,32 @@ export default class Nicovideo extends EventEmitter {
     return thumbinfo
   }
 
-  public async httpExport(uri: string, targetPath: string): Promise<string> {
-    await this.client.head(uri)
-    const response = await this.client.get(uri, { responseType: 'stream' })
-    const req = response.data.pipe(createWriteStream(targetPath))
-    await new Promise((resolve) => req.on('finish', resolve))
-    return targetPath
+  async getReadableStream(url: string): Promise<Readable> {
+    await this.client.head(url)
+    const response = await this.client.get(url, { responseType: 'stream' })
+    return response.data
   }
 
+  public async stream(videoID: string): Promise<Readable> {
+    const data = await this.watch(videoID)
+    const url = data.video.smileInfo.url
+    return await this.getReadableStream(url)
+  }
+
+  /**
+   * @returns filePath
+   */
   public async download(videoID: string, targetPath: string): Promise<string> {
     const data = await this.watch(videoID)
+    const url = data.video.smileInfo.url
+
     const fileName = filenamify(data.video.title) + '.' + data.video.movieType
-    const filePath = resolve(join(targetPath, fileName))
-    const exportedPath = await this.httpExport(
-      data.video.smileInfo.url,
-      filePath
-    )
-    return exportedPath
+    const filePath = resolve(targetPath, fileName)
+
+    const readStream = await this.getReadableStream(url)
+    const writeStream = createWriteStream(filePath)
+    await asyncPipe(readStream, writeStream)
+
+    return filePath
   }
 }
