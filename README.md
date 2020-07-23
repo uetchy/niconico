@@ -132,6 +132,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://uechi.io/"><img src="https://avatars0.githubusercontent.com/u/431808?v=4?s=100" width="100px;" alt=""/><br /><sub><b>uetchy</b></sub></a><br /><a href="https://github.com/uetchy/niconico/commits?author=uetchy" title="Code">💻</a></td>
+    <td align="center"><a href="https://hiroppy.me/"><img src="https://avatars1.githubusercontent.com/u/3367801?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Yuta Hiroto</b></sub></a><br /><a href="https://github.com/uetchy/niconico/commits?author=hiroppy" title="Code">💻</a></td>
   </tr>
 </table>
 
