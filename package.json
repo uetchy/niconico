@@ -3,7 +3,6 @@
   "description": "A nicovideo plug-in for NodeJS",
   "version": "1.1.2",
   "author": "Yasuaki Uechi",
-  "main": "lib",
   "scripts": {
     "build": "shx rm -rf lib && tsc",
     "coverage": "cat ./coverage/lcov.info | coveralls",
@@ -41,26 +40,27 @@
     "typedoc": "^0.17.3",
     "typescript": "^3.9.7"
   },
-  "bugs": {
-    "url": "https://github.com/uetchy/niconico/issues"
-  },
+  "main": "lib",
   "files": [
     "lib/*.js",
     "lib/*.d.ts"
   ],
-  "homepage": "https://github.com/uetchy/niconico#readme",
   "husky": {
     "hooks": {
       "pre-commit": "pretty-quick"
     }
   },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/uetchy/niconico.git"
+  },
+  "bugs": {
+    "url": "https://github.com/uetchy/niconico/issues"
+  },
+  "homepage": "https://github.com/uetchy/niconico#readme",
   "keywords": [
     "niconico",
     "nicovideo"
   ],
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/uetchy/niconico.git"
-  }
+  "license": "MIT"
 }
