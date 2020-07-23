@@ -16,7 +16,7 @@ niconico API library for Node.JS, armed with Promises.
 
 ## Usage
 
-```
+```bash
 npm install niconico
 ```
 
@@ -117,12 +117,7 @@ Before create a pull-request, you need to test using `npm test`.
 NICONICO_EMAIL=<email> NICONICO_PASSWORD=<password> npm test
 ```
 
-### Contributors
-
-- Yasuaki Uechi
-- Yuta Hiroto
-
-## Contributors ✨
+### Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
@@ -139,6 +134,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
