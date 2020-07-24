@@ -112,6 +112,14 @@ Type: `string`
 
 Type: `string`
 
+### nicovideo.stream(videoID)
+
+Return `stream.Readable` to download the video.
+
+#### videoID
+
+Type: `string`
+
 ## Contributing
 
 Before create a pull-request, you need to test using `npm test`.
