@@ -1,10 +1,11 @@
 import axios, { AxiosInstance } from 'axios'
 import axiosCookieJarSupport from 'axios-cookiejar-support'
 import { EventEmitter } from 'events'
+import fileType from 'file-type'
 import filenamify from 'filenamify'
-import { createWriteStream } from 'fs'
+import { createWriteStream, renameSync } from 'fs'
 import { JSDOM } from 'jsdom'
-import { join, resolve } from 'path'
+import { resolve } from 'path'
 import { Readable } from 'stream'
 import tough from 'tough-cookie'
 import { promisify } from 'util'
@@ -85,12 +86,18 @@ export default class Nicovideo extends EventEmitter {
     const data = await this.watch(videoID)
     const url = data.video.smileInfo.url
 
-    const fileName = filenamify(data.video.title) + '.' + data.video.movieType
-    const filePath = resolve(targetPath, fileName)
+    console.log(data.video.dmcInfo)
+
+    const fileName = filenamify(data.video.title)
+    const tmpFilePath = resolve(targetPath, fileName + '.tmp')
 
     const readStream = await this.getReadableStream(url)
-    const writeStream = createWriteStream(filePath)
+    const writeStream = createWriteStream(tmpFilePath)
     await asyncPipe(readStream, writeStream)
+
+    const type = await fileType.fromFile(tmpFilePath)
+    const filePath = resolve(targetPath, fileName + '.' + type.ext)
+    renameSync(tmpFilePath, filePath)
 
     return filePath
   }
